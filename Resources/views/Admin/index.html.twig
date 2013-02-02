@@ -1,0 +1,98 @@
+{% extends 'BlackroomAdminBundle::base.html.twig' %}
+{% block body %}
+
+{% include 'BlackroomAdminBundle:Admin:header.html.twig' %}
+{% include 'BlackroomAdminBundle:Admin:sidebar.html.twig' %}
+{% include 'BlackroomAdminBundle:Admin:secondaryNav.html.twig' %}
+
+{% set user = app.security.getToken().getUser() %}
+{% set title = "Welcome " ~ user.username ~ "!" %}
+<div id="content">
+    {% include 'BlackroomAdminBundle:Admin:contentTop.html.twig' with {'title': title} %}
+    {% include 'BlackroomAdminBundle:Admin:breadLine.html.twig' with {'route': 'admin_index', 'text': "Dashboard"} %}
+
+    <!-- Main content -->
+    <div class="wrapper">
+
+        <div class="fluid">
+            <div class="grid12">
+                <div class="widget">
+                    <div class="whead">
+                        <h6>{% trans %}Statistics{% endtrans %} </h6>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="body">
+                        <ul class="wInvoice">
+                            <li><h4 class="green">{{ countPerson }}</h4><span>{% trans %}persons in your database{% endtrans %}</span></li>
+                        </ul>
+
+                        <div class="clear"></div>
+                    </div>
+                </div>
+
+                <div class="widget searchWidget noBorderB">
+                    <div class="whead">
+                        <input type="text" name="srch" class="ac ui-autocomplete-input" placeholder="{% trans %}Search a person{% endtrans %}" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+                        <button type="submit" name="swSubmit"><span class="icos-search"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fluid">
+            <div class="grid6">
+                <div class="widget">
+                    <div class="whead"><h6>{% trans %}Last persons{% endtrans %}</h6><div class="clear"></div></div>
+                    <ul class="updates">
+                        {% for person in persons %}
+                        <li>
+                            <div class="wNews">
+                                <div class="announce">
+                                    <a href="{{ path('admin_person_show', { 'id': person.id }) }}" title="">{{ person.name }}</a>
+                                    {% if person.description %}<span>{{ person.description|truncate(160, true, '...') }}</span>{% endif %}
+                                </div>
+                            </div>
+                            <span class="uDate"><span>{{ person.createdAt|date('d') }}</span>{{ person.createdAt|date('M') }}</span>
+                            <span class="clear"></span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+
+            $( ".ac" ).autocomplete({
+                source: function( request, response ) {
+                    $.ajax({
+                        url: "{{ path('admin_search_json') }}",
+                        dataType: "json",
+                        data: {
+                            text: request.term
+                        },
+                        success: function( data ) {
+                            response( $.map( data, function( item ) {
+                                return {
+                                    label: item.name,
+                                    id: item.id
+                                }
+                            }));
+                        }
+                    });
+                },
+                select: function( event, ui) {
+                    var route = "{{ path('admin_person_show', { 'id':"ID"}) }}";
+                    window.location = route.replace('ID', ui.item.id);
+                }
+            });
+
+        });
+
+    </script>
+
+
+{% endblock %}

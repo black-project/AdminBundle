@@ -1,0 +1,27 @@
+admin:
+    username: Nom d'utilisateur
+    password: Mot de passe
+    remember: Se souvenir de moi
+    submit: Envoyer
+    dashboard: Tableau de bord
+    shortcut: Raccourcis
+    actions: Actions
+    noRecord: Il n'y a pas d'enregistrements !
+    add: Ajouter
+    year: Année
+    month: Mois
+    day: Jour
+    logout: Se déconnecter
+
+    table:
+        show: Voir
+        edit: Éditer
+        delete: Supprimer
+
+    action:
+        title: Choisir une action
+        label: Faites votre choix...
+        delete: Supprimer
+        create: Créer
+        edit: Éditer
+        back: Retour à la liste

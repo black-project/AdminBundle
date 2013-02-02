@@ -1,0 +1,150 @@
+{#
+todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par {attr: *} ?!
+        Comme si on pouvait faire confiance aux devs pour sortir du HTML correct (HAHAHA -_-v)
+#}
+{% block form_row %}
+<div class="formRow">
+    <div class="grid3">{{ form_label(form) }}</div>
+    <div class="grid9">
+        {{ form_widget(form) }}
+        {{ form_errors(form) }}
+    </div>
+    <div class="clear"></div>
+</div>
+{% endblock %}
+
+{% block choice_widget_collapsed %}
+    {% spaceless %}
+        <select {{ block('widget_attributes') }}{% if multiple %} class="multiple" multiple="multiple"{% endif %}>
+            {% if empty_value is not none %}
+                <option value="">{{ empty_value|trans({}, translation_domain) }}</option>
+            {% endif %}
+            {% if preferred_choices|length > 0 %}
+                {% set options = preferred_choices %}
+                {{ block('choice_widget_options') }}
+                {% if choices|length > 0 and separator is not none %}
+                    <option disabled="disabled">{{ separator }}</option>
+                {% endif %}
+            {% endif %}
+            {% set options = choices %}
+            {{ block('choice_widget_options') }}
+        </select>
+    {% endspaceless %}
+{% endblock choice_widget_collapsed %}
+
+{% block checkbox_widget %}
+    {% spaceless %}
+        <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} class="check" />
+    {% endspaceless %}
+{% endblock checkbox_widget %}
+
+{% block form_label %}
+    {% spaceless %}
+        {% if not compound %}
+        {% set label_attr = label_attr|merge({'for': id}) %}
+        {% endif %}
+
+        {% if required %}
+        {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+        {% endif %}
+
+        {% if label is empty %}
+        {% set label = name|humanize %}
+        {% endif %}
+
+        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+            {{ label|trans({}, translation_domain) }}{% if required %}<span class="req">*</span>{%endif %}
+        </label>
+    {% endspaceless %}
+{% endblock form_label %}
+
+{% block textarea_widget %}
+    {% spaceless %}
+        <textarea {{ block('widget_attributes') }} rows="10">{{ value }}</textarea>
+    {% endspaceless %}
+{% endblock textarea_widget %}
+
+{% block form_errors %}
+    {% spaceless %}
+        {% if errors|length > 0 %}
+            <div class="nNote nFailure">
+            <ul>
+                {% for error in errors %}
+                    <li>{{
+                    error.messagePluralization is null
+                    ? error.messageTemplate|trans(error.messageParameters, 'validators')
+                    : error.messageTemplate|transchoice(error.messagePluralization, error.messageParameters, 'validators')
+                    }}</li>
+                {% endfor %}
+            </ul>
+            </div>
+        {% endif %}
+    {% endspaceless %}
+{% endblock form_errors %}
+
+{% block collection_widget %}
+    {% spaceless %}
+        <div class="collection">
+            {% if prototype is defined %}
+                {% set attr = attr|merge({'data-prototype': block('collection_item_widget') }) %}
+            {% endif %}
+            <div {{ block('widget_container_attributes') }}>
+                {{ form_errors(form) }}
+
+                {% for rows in form %}
+                <div class="formRow">
+                    {% set fieldNum = 1 %}
+                    {% for row in rows %}
+                        <div class="formRow field{{ fieldNum }} {% if loop.last %}noBorderB{% endif %}">
+                            <div class="grid3">{{ form_label(row) }}</div>
+                            <div class="grid9">{{ form_widget(row) }}</div>
+                            <div class="clear"></div>
+                        </div>
+                        {% set fieldNum = fieldNum + 1 %}
+                    {% else %}
+                        <div class="formRow field{{ fieldNum }} noBorderB">
+                            <div class="grid3">{{ form_label(rows) }}</div>
+                            <div class="grid9">{{ form_widget(rows) }}</div>
+                            <div class="clear"></div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+
+                {{ form_rest(form) }}
+            </div>
+            <div class="clear"></div>
+
+            {% for attrname, attrvalue in attr %}
+                {% if 'add' == attrname %}
+                    <a href="#" id="{{ attrvalue }}" class="add buttonS bBlue mt10">{% trans %}admin.add{% endtrans %}</a>
+                {% endif %}
+            {% endfor %}
+
+        </div>
+        <div class="clear"></div>
+    {% endspaceless %}
+{% endblock collection_widget %}
+
+{% block collection_item_widget %}
+    {% spaceless %}
+        <div class="formRow">
+            {% set fieldNum = 1 %}
+            {% for row in prototype %}
+                <div class="formRow field{{ fieldNum }} {% if loop.last %}noBorderB{% endif %}">
+                    <div class="grid3">{{ form_label(row) }}</div>
+                    <div class="grid9">{{ form_widget(row) }}</div>
+                    <div class="clear"></div>
+                </div>
+                {% set fieldNum = fieldNum + 1 %}
+            {% else %}
+                <div class="formRow noBorderB">
+                    <div class="grid3">{{ form_label(prototype) }}</div>
+                    <div class="grid9">{{ form_widget(prototype) }}</div>
+                    <div class="clear"></div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="clear"></div>
+    {% endspaceless %}
+{% endblock collection_item_widget %}

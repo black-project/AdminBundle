@@ -1,0 +1,11 @@
+{% form_theme form 'BlackroomAdminBundle:AdminForm:fields.html.twig' %}
+{% set title = title is defined ? title : "Create a new thing" %}
+
+<fieldset>
+    <div class="widget">
+        <div class="whead"><h6>{{ title|trans }}</h6><div class="clear"></div></div>
+        {% for input in form %}
+            {{ form_rest(form) }}
+        {% endfor %}
+    </div>
+</fieldset>
