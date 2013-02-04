@@ -3,7 +3,7 @@ admin:
     password: Mot de passe
     remember: Se souvenir de moi
     submit: Envoyer
-    dashboard: Tableau de bord
+    dashboard.title: Tableau de bord
     shortcut: Raccourcis
     actions: Actions
     noRecord: Il n'y a pas d'enregistrements !
@@ -25,3 +25,18 @@ admin:
         create: Créer
         edit: Éditer
         back: Retour à la liste
+
+    dashboard:
+        create:
+            person: Créer une nouvelle personne
+
+        widget:
+            person:
+                title: Les derniers clients
+
+    statistics:
+        title: Statistiques
+        person: dans votre base de donnée
+
+    search:
+        input: Rechercher une personne

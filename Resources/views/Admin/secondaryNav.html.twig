@@ -3,7 +3,7 @@
     <div class="secWrapper">
         <div class="secTop">
             <div class="balance">
-                <div class="balInfo">Dashboard</span></div>
+                <div class="balInfo">{% trans %}admin.dashboard.title{% endtrans %}</span></div>
             </div>
         </div>
 
@@ -19,14 +19,14 @@
 
             <div id="general">
                 <ul class="subNav">
-                    <li><a href="ui.html" title="" class="this"><span class="icos-fullscreen"></span>Dashboard</a></li>
+                    <li><a href="ui.html" title="" class="this"><span class="icos-fullscreen"></span>{% trans %}admin.dashboard.title{% endtrans %}</a></li>
                 </ul>
             </div>
 
             <div class="divider"><span></span></div>
 
             <div class="sidePad">
-                <a href="{{ path('admin_person_new') }}" title="" class="sideB bGreen">{% trans %}Create a new person{% endtrans %}</a>
+                <a href="{{ path('admin_person_new') }}" title="" class="sideB bGreen">{% trans %}admin.dashboard.create.person{% endtrans %}</a>
             </div>
         </div>
 

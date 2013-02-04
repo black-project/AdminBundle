@@ -10,7 +10,7 @@
             </a>
             <span>{{ app.user.username }}</span>
             <ul class="leftUser">
-                <li><a href="{{ url('admin_logout') }}" title="" class="sLogout">admin.logout</a></li>
+                <li><a href="{{ url('admin_logout') }}" title="" class="sLogout">{% trans %}admin.logout{% endtrans %}</a></li>
             </ul>
         </div>
 
@@ -34,7 +34,7 @@
             <li>
                 <a href="{{ url('admin_index') }}" title="">
                     <img src="/bundles/blackroomadmin/images/icons/mainnav/dashboard.png" alt="" />
-                    <span>{% trans %}admin.dashboard{% endtrans %}</span>
+                    <span>{% trans %}admin.dashboard.title{% endtrans %}</span>
                 </a>
             </li>
             <li>
