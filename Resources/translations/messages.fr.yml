@@ -36,7 +36,7 @@ admin:
 
   statistics:
     title: Statistiques
-    person: dans votre base de donnée
+    person: personnes dans votre base de donnée
 
   search:
     input: Rechercher une personne

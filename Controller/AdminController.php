@@ -112,7 +112,7 @@ class AdminController extends Controller
         return $this->redirect($this->generateUrl('admin_person_show', array('id' => $parameters['to'])));
     }
 
-    private function getPersonManager()
+    protected function getPersonManager()
     {
         return $this->get('blackroom_engine.manager.person');
     }
