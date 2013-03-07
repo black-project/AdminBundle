@@ -24,6 +24,7 @@ admin:
     create: Créer
     edit: Éditer
     back: Retour à la liste
+    update: Mettre à jour
 
   dashboard:
     title: Tableau de bord
