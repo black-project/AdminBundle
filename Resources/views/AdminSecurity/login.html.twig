@@ -1,0 +1,32 @@
+{% extends "BlackroomAdminBundle::base.html.twig" %}
+
+{% block body %}
+{% include 'BlackroomAdminBundle:Admin:header.html.twig' %}
+
+<div class="loginWrapper">
+
+    <form id="login" action="{{ path("admin_login_check") }}" method="post">
+        <div class="loginPic">
+            <a href="#" title=""><img src="/bundles/blackroomadmin/images/userLogin2.png" alt="" /></a>
+        </div>
+
+        {% if error %}
+        <div class="nNote nFailure">{{ error.message }}</div>
+        {% endif %}
+
+        <input type="text" name="_username" value="{{ last_username }}" placeholder="{% trans %}admin.username{% endtrans %}" class="loginUsername" />
+        <input type="password" name="_password" placeholder="{% trans %}admin.password{% endtrans %}" class="loginPassword" />
+
+        <div class="logControl">
+            <div class="memory">
+                <input type="checkbox" class="check" id="remember" name="_remember_me" />
+                <label for="remember">{% trans %}admin.remember{% endtrans %}</label>
+            </div>
+            <input type="submit" name="_submit" value="{% trans %}admin.submit{% endtrans %}" class="buttonM bBlue" />
+        </div>
+    </form>
+
+</div>
+<!-- Login wrapper ends -->
+
+{% endblock body %}

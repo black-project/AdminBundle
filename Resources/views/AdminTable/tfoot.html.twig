@@ -1,0 +1,18 @@
+<tfoot>
+    <tr>
+        <td colspan="6">
+            <div class="itemActions">
+                <label>{% trans %}admin.action.title{% endtrans %}</label>
+                <select name="batchAction" style="opacity: 0;">
+                    <option value="">{% trans %}admin.action.label{% endtrans %}</option>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <option value="delete">{% trans %}admin.action.delete{% endtrans %}</option>
+                    {% endif %}
+                </select>
+                <input type="hidden" name="token" value="{{ csrf.generateCsrfToken('batch') }}" />
+                <input type="submit" class="buttonS bGreen" value="{% trans %}admin.submit{% endtrans %}" />
+            </div>
+
+        </td>
+    </tr>
+</tfoot>

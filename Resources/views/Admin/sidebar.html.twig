@@ -1,0 +1,60 @@
+<div id="sidebar">
+    <div class="mainNav">
+        <div class="user">
+            <a title="" class="leftUserDrop">
+                {% if app.security.getToken().getUser().getPerson().getImage() is defined %}
+                <img src="/bundles/blackroomadmin/images/user.png" alt="" />
+                {% else %}
+                <img src="/bundles/blackroomadmin/images/userLogin2.png" alt="" width="72" height="70" />
+                {% endif %}
+            </a>
+            <span>{{ app.user.username }}</span>
+            <ul class="leftUser">
+                <li><a href="{{ url('admin_logout') }}" title="" class="sLogout">{% trans %}admin.logout{% endtrans %}</a></li>
+            </ul>
+        </div>
+
+        <!-- Responsive nav -->
+        <div class="altNav">
+            <div class="userSearch">
+                <form action="">
+                    <input type="text" placeholder="search..." name="userSearch" />
+                    <input type="submit" value="" />
+                </form>
+            </div>
+
+            <!-- User nav -->
+            <ul class="userNav">
+                <li><a href="{{ url('admin_logout') }}" title="" class="logout"></a></li>
+            </ul>
+        </div>
+
+        <!-- Main nav -->
+        <ul class="nav">
+            <li>
+                <a href="{{ url('admin_index') }}" title="">
+                    <img src="/bundles/blackroomadmin/images/icons/mainnav/dashboard.png" alt="" />
+                    <span>{% trans %}admin.dashboard.title{% endtrans %}</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('admin_persons') }}" title="">
+                    <img src="/bundles/blackroomadmin/images/icons/mainnav/ui.png" alt="" />
+                    <span>{% trans %}engine.admin.person.title{% endtrans %}</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('admin_users') }}" title="">
+                    <img src="/bundles/blackroomadmin/images/icons/mainnav/ui.png" alt="" />
+                    <span>{% trans %}user.admin.title{% endtrans %}</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url('admin_config') }}" title="">
+                    <img src="/bundles/blackroomadmin/images/icons/mainnav/other.png" alt="" />
+                    <span>{% trans %}engine.admin.config.title{% endtrans %}</span>
+                </a>
+            </li>
+        </ul>
+    </div>

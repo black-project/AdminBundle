@@ -1,0 +1,35 @@
+<div id="dyn" class="hiddenpars">
+    {% if documents %}
+    <a class="tOptions" title="Options"><img src="/bundles/blackroomadmin/images/icons/options" alt="" /></a>
+    {% endif %}
+
+    <table cellpadding="0" cellspacing="0" width="100%" class="tDefault checkAll tMedia {% if documents %}dTable{% endif %}" id="dynamic">
+        <thead>
+            <tr>
+                <td style="width: 30px"><img src="/bundles/blackroomadmin/images/elements/other/tableArrows.png" alt="" /></td>
+                {% for document in documents %}
+                    {% if loop.first %}
+                    {% for key, value in document %}
+                        {% if 'id' != key %}
+                            <td class="sortCol"><div>{{ key|trans() }}<span></span></div></td>
+                        {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                {% endfor %}
+                <td style="width: 100px">{% trans %}admin.actions{% endtrans %}</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for document in documents %}
+                {% include 'BlackroomAdminBundle:AdminTable:row.html.twig' with {'document': document} %}
+            {% else %}
+            <tr class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
+                <td colspan="3">{% trans %}admin.noRecord{% endtrans %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+        {% include 'BlackroomAdminBundle:AdminTable:tfoot.html.twig' %}
+    </table>
+</div>

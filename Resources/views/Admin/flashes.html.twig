@@ -1,0 +1,5 @@
+{% for key, flash in flashes %}
+<div class="nNote {{ 'n' ~ key|capitalize }}">
+    <p>{{ flash }}</p>
+</div>
+{% endfor %}
