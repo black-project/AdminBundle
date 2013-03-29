@@ -7,6 +7,7 @@ admin:
   actions: Actions
   noRecord: Il n'y a pas d'enregistrements !
   add: Ajouter
+  remove : Supprimer
   year: Année
   month: Mois
   day: Jour
@@ -37,7 +38,7 @@ admin:
 
   statistics:
     title: Statistiques
-    person: personnes dans votre base de donnée
+    person: "{0} Il faut créer des personnes maintenant ! |{1} personne dans votre base de données | ]1,Inf] personnes dans votre base de données"
 
   search:
     input: Rechercher une personne
