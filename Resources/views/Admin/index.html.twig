@@ -25,7 +25,9 @@
 
                     <div class="body">
                         <ul class="wInvoice">
-                            <li><h4 class="green">{{ countPerson }}</h4><span>{% trans %}admin.statistics.person{% endtrans %}</span></li>
+                            <li><h4 class="green">{{ countPerson }}</h4>
+                                <span>{% transchoice countPerson %}admin.statistics.person{% endtranschoice %}</span>
+                            </li>
                         </ul>
 
                         <div class="clear"></div>
