@@ -1,6 +1,6 @@
 <div id="dyn" class="hiddenpars">
     {% if documents %}
-    <a class="tOptions" title="Options"><img src="/bundles/blackroomadmin/images/icons/options" alt="" /></a>
+    <a class="tOptions" title="Options"><img src="/bundles/blackadmin/images/icons/options" alt="" /></a>
     {% endif %}
 
     <table cellpadding="0" cellspacing="0" width="100%" class="tDefault checkAll tMedia {% if documents %}dTable{% endif %}" id="dynamic">
@@ -22,7 +22,7 @@
 
         <tbody>
             {% for document in documents %}
-                {% include 'BlackroomAdminBundle:AdminTable:row.html.twig' with {'document': document} %}
+                {% include 'BlackAdminBundle:AdminTable:row.html.twig' with {'document': document} %}
             {% else %}
             <tr class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
                 <td colspan="3">{% trans %}admin.noRecord{% endtrans %}</td>
@@ -30,6 +30,6 @@
             {% endfor %}
         </tbody>
 
-        {% include 'BlackroomAdminBundle:AdminTable:tfoot.html.twig' %}
+        {% include 'BlackAdminBundle:AdminTable:tfoot.html.twig' %}
     </table>
 </div>

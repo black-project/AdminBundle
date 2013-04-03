@@ -6,11 +6,11 @@
 
     <!--
     <parameters>
-        <parameter key="blackroom_admin.example.class">Blackroom\Bundle\AdminBundle\Example</parameter>
+        <parameter key="black_admin.example.class">Black\Bundle\AdminBundle\Example</parameter>
     </parameters>
 
     <services>
-        <service id="blackroom_admin.example" class="%blackroom_admin.example.class%">
+        <service id="blacblackin.example" class="%blackroom_admin.example.class%">
             <argument type="service" id="service_id" />
             <argument>plain_value</argument>
             <argument>%parameter_name%</argument>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Blackroom\Bundle\AdminBundle\Tests\Controller;
+namespace Black\Bundle\AdminBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

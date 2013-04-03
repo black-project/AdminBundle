@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Blackroom\Bundle\AdminBundle\Controller;
+namespace Black\Bundle\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -88,7 +88,7 @@ class AdminController extends Controller
     public function sendMail()
     {
         $request    = $this->get('request');
-        $parameters = $request->request->get('blackroom_engine_contact');
+        $parameters = $request->request->get('black_engine_contact');
 
         if ('POST' === $request->getMethod()) {
             $manager      = $this->getPersonManager();
@@ -100,11 +100,11 @@ class AdminController extends Controller
                 throw $this->createNotFoundException('Unable to find Person document.');
             }
 
-            $form = $this->createForm($this->get('blackroom_engine.contact.form.type'), array('id' => $parameters['to']));
+            $form = $this->createForm($this->get('black_engine.contact.form.type'), array('id' => $parameters['to']));
             $form->bind($this->getRequest());
 
             if ($form->isValid()) {
-                $this->get('blackroom_engine.mailer')->sendContactMessage($document, $this->getUser(), $parameters);
+                $this->get('black_engine.mailer')->sendContactMessage($document, $this->getUser(), $parameters);
                 $this->get('session')->getFlashbag()->add('success', 'Your message was successfully sent');
             }
         }
@@ -114,6 +114,6 @@ class AdminController extends Controller
 
     protected function getPersonManager()
     {
-        return $this->get('blackroom_engine.manager.person');
+        return $this->get('black_engine.manager.person');
     }
 }

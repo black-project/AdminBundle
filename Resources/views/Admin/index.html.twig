@@ -1,16 +1,16 @@
-{% extends 'BlackroomAdminBundle::base.html.twig' %}
+{% extends 'BlackAdminBundle::base.html.twig' %}
 {% block body %}
 
-{% include 'BlackroomAdminBundle:Admin:header.html.twig' %}
-{% include 'BlackroomAdminBundle:Admin:sidebar.html.twig' %}
-{% include 'BlackroomAdminBundle:Admin:secondaryNav.html.twig' %}
+{% include 'BlackAdminBundle:Admin:header.html.twig' %}
+{% include 'BlackAdminBundle:Admin:sidebar.html.twig' %}
+{% include 'BlackAdminBundle:Admin:secondaryNav.html.twig' %}
 
 {% set user = app.security.getToken().getUser() %}
 {% set title = "Welcome " ~ user.username ~ "!" %}
 
 <div id="content">
-    {% include 'BlackroomAdminBundle:Admin:contentTop.html.twig' with {'title': title} %}
-    {% include 'BlackroomAdminBundle:Admin:breadLine.html.twig' with {'route': 'admin_index', 'text': "Dashboard"} %}
+    {% include 'BlackAdminBundle:Admin:contentTop.html.twig' with {'title': title} %}
+    {% include 'BlackAdminBundle:Admin:breadLine.html.twig' with {'route': 'admin_index', 'text': "Dashboard"} %}
 
     <!-- Main content -->
     <div class="wrapper">

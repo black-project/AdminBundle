@@ -1,6 +1,6 @@
 <?php
 
-namespace Blackroom\Bundle\AdminBundle\DependencyInjection;
+namespace Black\Bundle\AdminBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class BlackroomAdminExtension extends Extension
+class BlackAdminExtension extends Extension
 {
     /**
      * {@inheritDoc}

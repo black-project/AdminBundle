@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Blackroom\Bundle\AdminBundle\Controller;
+namespace Black\Bundle\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;

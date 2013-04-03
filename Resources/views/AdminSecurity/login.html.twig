@@ -1,13 +1,13 @@
-{% extends "BlackroomAdminBundle::base.html.twig" %}
+{% extends "BlackAdminBundle::base.html.twig" %}
 
 {% block body %}
-{% include 'BlackroomAdminBundle:Admin:header.html.twig' %}
+{% include 'BlackAdminBundle:Admin:header.html.twig' %}
 
 <div class="loginWrapper">
 
     <form id="login" action="{{ path("admin_login_check") }}" method="post">
         <div class="loginPic">
-            <a href="#" title=""><img src="/bundles/blackroomadmin/images/userLogin2.png" alt="" /></a>
+            <a href="#" title=""><img src="/bundles/blackadmin/images/userLogin2.png" alt="" /></a>
         </div>
 
         {% if error %}
