@@ -19,8 +19,8 @@ admin:
     delete: Supprimer
 
   action:
-    title: Choisir une action
-    label: Faites votre choix...
+    title: Exécuter une action
+    label: Choisir une action
     delete: Supprimer
     create: Créer
     edit: Éditer
