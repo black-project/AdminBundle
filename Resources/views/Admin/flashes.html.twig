@@ -1,5 +1,7 @@
 {% for key, flash in flashes %}
-<div class="nNote {{ 'n' ~ key|capitalize }}">
-    <p>{{ flash|trans() }}</p>
-</div>
+    {% for message in flash %}
+    <div class="nNote {{ 'n' ~ key|capitalize }}">
+        <p>{{ message|trans() }}</p>
+    </div>
+    {% endfor %}
 {% endfor %}
