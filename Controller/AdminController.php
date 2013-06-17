@@ -105,7 +105,7 @@ class AdminController extends Controller
 
             if ($form->isValid()) {
                 $this->get('black_engine.mailer')->sendContactMessage($document, $this->getUser(), $parameters);
-                $this->get('session')->getFlashbag()->add('success', 'Your message was successfully sent');
+                $this->get('session')->getFlashbag()->add('success', 'success.admin.admin.mail.send');
             }
         }
 

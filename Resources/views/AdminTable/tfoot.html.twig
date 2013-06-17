@@ -2,15 +2,15 @@
     <tr>
         <td colspan="6">
             <div class="itemActions">
-                <label>{% trans %}admin.action.title{% endtrans %}</label>
+                <label>{% trans from "form" %}admin.admin.tfoot.action.label.text{% endtrans %}</label>
                 <select name="batchAction" style="opacity: 0;">
-                    <option value="">{% trans %}admin.action.label{% endtrans %}</option>
+                    <option value="">{% trans from "form" %}admin.admin.tfoot.action.select.default{% endtrans %}</option>
                     {% if is_granted('ROLE_ADMIN') %}
-                    <option value="delete">{% trans %}admin.action.delete{% endtrans %}</option>
+                    <option value="delete">{% trans from "form" %}admin.admin.tfoot.action.select.delete{% endtrans %}</option>
                     {% endif %}
                 </select>
                 <input type="hidden" name="token" value="{{ csrf.generateCsrfToken('batch') }}" />
-                <input type="submit" class="buttonS bGreen" value="{% trans %}admin.submit{% endtrans %}" />
+                <input type="submit" class="buttonS bGreen" value="{% trans from "form" %}admin.admin.tfoot.action.submit.value{% endtrans %}" />
             </div>
 
         </td>

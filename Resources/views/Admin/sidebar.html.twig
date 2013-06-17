@@ -10,11 +10,11 @@
             </a>
             <span>{{ app.user.username }}</span>
             <ul class="leftUser">
-                <li><a href="{{ url('admin_logout') }}" title="" class="sLogout">{% trans %}admin.logout{% endtrans %}</a></li>
+                <li><a href="{{ url('admin_logout') }}" title="{% trans from "views" %}admin.admin.sidebar.logout.a.title{% endtrans %}" class="sLogout">{% trans from "views" %}admin.admin.sidebar.logout.a.text{% endtrans %}</a></li>
             </ul>
         </div>
 
-        <!-- Responsive nav -->
+        {#  Responsive nav  #}
         <div class="altNav">
             <div class="userSearch">
                 <form action="">
@@ -23,33 +23,34 @@
                 </form>
             </div>
 
-            <!-- User nav -->
+            {#  User nav  #}
             <ul class="userNav">
-                <li><a href="{{ url('admin_logout') }}" title="" class="logout"></a></li>
+                <li><a href="{{ url('admin_logout') }}" title="{% trans from "views" %}admin.admin.sidebar.logout.a.title{% endtrans %}" class="logout">{% trans from "views" %}admin.admin.sidebar.logout.a.text{% endtrans %}</a>
             </ul>
         </div>
 
-        <!-- Main nav -->
+        {#  Main nav  #}
         <ul class="nav">
-            <li>
-                <a href="{{ url('admin_index') }}" title="">
-                    <img src="/bundles/blackadmin/images/icons/mainnav/dashboard.png" alt="" />
-                    <span>{% trans %}admin.dashboard.title{% endtrans %}</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ url('admin_persons') }}" title="">
-                    <img src="/bundles/blackadmin/images/icons/mainnav/ui.png" alt="" />
-                    <span>{% trans %}engine.admin.person.title{% endtrans %}</span>
-                </a>
-            </li>
-
-
-            <li>
-                <a href="{{ url('admin_config') }}" title="">
-                    <img src="/bundles/blackadmin/images/icons/mainnav/other.png" alt="" />
-                    <span>{% trans %}engine.admin.config.title{% endtrans %}</span>
-                </a>
-            </li>
+            {% include 'BlackAdminBundle:Admin:mainNav.html.twig' with {
+                'a_route': 'admin_index',
+                'a_text': 'admin.admin.mainNav.dashboard.a.text',
+                'a_title': 'admin.admin.mainNav.dashboard.a.title',
+                'img_alt': 'admin.admin.mainNav.dashboard.img.alt',
+                'img_path': 'dashboard.png'
+            } only %}
+            {% include 'BlackAdminBundle:Admin:mainNav.html.twig' with {
+                'a_route': 'admin_persons',
+                'a_text': 'engine.admin.mainNav.person.a.text',
+                'a_title': 'engine.admin.mainNav.person.a.title',
+                'img_alt': 'engine.admin.mainNav.person.img.alt',
+                'img_path': 'ui.png'
+            } only %}
+            {% include 'BlackAdminBundle:Admin:mainNav.html.twig' with {
+                'a_route': 'admin_config',
+                'a_text': 'engine.admin.mainNav.config.a.text',
+                'a_title': 'engine.admin.mainNav.config.a.title',
+                'img_alt': 'engine.admin.mainNav.config.img.alt',
+                'img_path': 'other.png'
+            } only %}
         </ul>
     </div>
