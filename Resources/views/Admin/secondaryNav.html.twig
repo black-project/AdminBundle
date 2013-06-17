@@ -1,13 +1,13 @@
-<!-- Secondary nav -->
+{#  Secondary nav  #}
 <div class="secNav">
     <div class="secWrapper">
         <div class="secTop">
             <div class="balance">
-                <div class="balInfo">{% trans %}admin.dashboard.title{% endtrans %}</span></div>
+                <div class="balInfo">{% trans from "views" %}admin.admin.secondaryNav.dashboard.text{% endtrans %}</span></div>
             </div>
         </div>
 
-        <!-- Tabs container -->
+        {#  Tabs container  #}
         <div id="tab-container" class="tab-container">
             <ul class="iconsLine ic3 etabs" style="display: none;">
                 <li><a href="#general" title=""><span class="icos-fullscreen"></span></a></li>
@@ -19,14 +19,14 @@
 
             <div id="general">
                 <ul class="subNav">
-                    <li><a href="ui.html" title="" class="this"><span class="icos-fullscreen"></span>{% trans %}admin.dashboard.title{% endtrans %}</a></li>
+                    <li><a href="{{ path('admin_index') }}" title="{% trans from "views" %}admin.admin.secondaryNav.dashboard.a.title{% endtrans %}" class="this" title="{% trans from "views" %}admin.admin.secondaryNav.dashboard.a.title{% endtrans %}"><span class="icos-fullscreen"></span>{% trans from "views" %}admin.admin.secondaryNav.dashboard.a.text{% endtrans %}</a></li>
                 </ul>
             </div>
 
             <div class="divider"><span></span></div>
 
             <div class="sidePad">
-                <a href="{{ path('admin_person_new') }}" title="" class="sideB bGreen">{% trans %}admin.dashboard.create.person{% endtrans %}</a>
+                <a href="{{ path('admin_person_new') }}" title="{% trans from "views" %}engine.admin.secondaryNav.person.create.a.title{% endtrans %}" class="sideB bGreen">{% trans from "views" %}engine.admin.secondaryNav.person.create.a.text{% endtrans %}</a>
             </div>
         </div>
 
@@ -34,4 +34,4 @@
     <div class="clear"></div>
 </div>
 </div>
-<!-- Sidebar ends -->
+{#  Sidebar ends  #}

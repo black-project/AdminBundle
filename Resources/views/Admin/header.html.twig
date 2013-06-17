@@ -4,7 +4,7 @@
             <img src="{{ black.site_logo is defined ? '/uploads/settings/' ~ black.site_logo : '/bundles/blackadmin/images/logo.png' }}" alt="" height="28" />
         </a>
 
-        <!-- Right top nav -->
+        {# Right top nav #}
         <div class="topNav">
             <ul class="userNav">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -23,9 +23,9 @@
             </div>
         </div>
 
-        <!-- Responsive nav -->
+        {# Responsive nav #}
         <ul class="altMenu">
-            <li><a href="index.html" title="">Dashboard</a></li>
+            <li><a href="index.html" title="{% trans from "views" %}admin.admin.header.dashboard.a.title{% endtrans %}">{% trans from "views" %}admin.admin.header.dashboard.a.text{% endtrans %}</a></li>
             <li><a href="ui.html" title="" class="exp" id="current">UI elements</a>
                 <ul>
                     <li><a href="ui.html" class="active">General elements</a></li>

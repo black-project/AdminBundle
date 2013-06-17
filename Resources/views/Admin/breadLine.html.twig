@@ -1,8 +1,12 @@
-<!-- Breadcrumbs line -->
+{#  Breadcrumbs line  #}
 <div class="breadLine">
     <div class="bc">
         <ul id="breadcrumbs" class="breadcrumbs">
-            <li><a href="{{ url('admin_index') }}">{% trans %}admin.dashboard.title{% endtrans %}</a></li>
+            <li>
+                <a href="{{ url('admin_index') }}" title="{% trans from "views" %}admin.admin.breadLine.dashboard.a.title{% endtrans %}">
+                    {% trans from "views" %}admin.admin.breadLine.dashboard.a.text{% endtrans %}
+                </a>
+            </li>
         </ul>
     </div>
 </div>

@@ -13,11 +13,26 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
 </div>
 {% endblock %}
 
+{% block choice_widget_options %}
+    {% spaceless %}
+        {% for group_label, choice in options %}
+            {% if choice is iterable %}
+                <optgroup label="{{ group_label|trans({}, "form") }}">
+                    {% set options = choice %}
+                    {{ block('choice_widget_options') }}
+                </optgroup>
+            {% else %}
+                <option value="{{ choice.value }}"{% if choice is selectedchoice(value) %} selected="selected"{% endif %}>{{ choice.label|trans({}, "form") }}</option>
+            {% endif %}
+        {% endfor %}
+    {% endspaceless %}
+{% endblock choice_widget_options %}
+
 {% block choice_widget_collapsed %}
     {% spaceless %}
         <select {{ block('widget_attributes') }}{% if multiple %} class="multiple" multiple="multiple"{% endif %}>
             {% if empty_value is not none %}
-                <option value="">{{ empty_value|trans({}, translation_domain) }}</option>
+                <option value="">{{ empty_value|trans({}, "form") }}</option>
             {% endif %}
             {% if preferred_choices|length > 0 %}
                 {% set options = preferred_choices %}
@@ -53,7 +68,7 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
         {% endif %}
 
         <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
-            {{ label|trans({}, translation_domain) }}{% if required %}<span class="req">*</span>{%endif %}
+            {{ label|trans({}, "form") }}{% if required %}<span class="req">*</span>{%endif %}
         </label>
     {% endspaceless %}
 {% endblock form_label %}
@@ -117,7 +132,7 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
 
             {% for attrname, attrvalue in attr %}
                 {% if 'add' == attrname %}
-                    <a href="#" id="{{ attrvalue }}" class="add buttonS bBlue mt10">{% trans %}admin.add{% endtrans %}</a>
+                    <a href="#" id="{{ attrvalue }}" title="{% trans from "views" %}admin.admin.fields.add.title{% endtrans %}" class="add buttonS bBlue mt10">{% trans from "views" %}admin.admin.fields.add.text{% endtrans %}</a>
                 {% endif %}
             {% endfor %}
 
@@ -128,23 +143,20 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
 
 {% block collection_item_widget %}
     {% spaceless %}
-        <div class="formRow">
-            {% set fieldNum = 1 %}
-            {% for row in prototype %}
-                <div class="formRow field{{ fieldNum }} {% if loop.last %}noBorderB{% endif %}">
-                    <div class="grid3">{{ form_label(row) }}</div>
-                    <div class="grid9">{{ form_widget(row) }}</div>
-                    <div class="clear"></div>
-                </div>
-                {% set fieldNum = fieldNum + 1 %}
-            {% else %}
-                <div class="formRow noBorderB">
-                    <div class="grid3">{{ form_label(prototype) }}</div>
-                    <div class="grid9">{{ form_widget(prototype) }}</div>
-                    <div class="clear"></div>
-                </div>
-            {% endfor %}
-        </div>
-        <div class="clear"></div>
+        {% set fieldNum = 1 %}
+        {% for row in prototype %}
+            <div class="formRow field{{ fieldNum }} {% if loop.last %}noBorderB{% endif %}">
+                <div class="grid3">{{ form_label(row) }}</div>
+                <div class="grid9">{{ form_widget(row) }}</div>
+                <div class="clear"></div>
+            </div>
+            {% set fieldNum = fieldNum + 1 %}
+        {% else %}
+            <div class="formRow noBorderB">
+                <div class="grid3">{{ form_label(prototype) }}</div>
+                <div class="grid9">{{ form_widget(prototype) }}</div>
+                <div class="clear"></div>
+            </div>
+        {% endfor %}
     {% endspaceless %}
 {% endblock collection_item_widget %}

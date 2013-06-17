@@ -6,27 +6,27 @@
 {% include 'BlackAdminBundle:Admin:secondaryNav.html.twig' %}
 
 {% set user = app.security.getToken().getUser() %}
-{% set title = "Welcome " ~ user.username ~ "!" %}
+{% set title = 'admin.admin.index.hello.text'|trans({"%username%":user.username}, "views") %}
 
 <div id="content">
     {% include 'BlackAdminBundle:Admin:contentTop.html.twig' with {'title': title} %}
-    {% include 'BlackAdminBundle:Admin:breadLine.html.twig' with {'route': 'admin_index', 'text': "Dashboard"} %}
+    {% include 'BlackAdminBundle:Admin:breadLine.html.twig' with {'route': 'admin_index', 'text': "admin.admin.breadLine.dashboard.a.text"} %}
 
-    <!-- Main content -->
+    {#  Main content  #}
     <div class="wrapper">
 
         <div class="fluid">
             <div class="grid12">
                 <div class="widget">
                     <div class="whead">
-                        <h6>{% trans %}admin.statistics.title{% endtrans %} </h6>
+                        <h6>{% trans from "views" %}admin.admin.index.statistics.text{% endtrans %}</h6>
                         <div class="clear"></div>
                     </div>
 
                     <div class="body">
                         <ul class="wInvoice">
                             <li><h4 class="green">{{ countPerson }}</h4>
-                                <span>{% transchoice countPerson %}admin.statistics.person{% endtranschoice %}</span>
+                                <span>{% transchoice countPerson from "views" %}admin.admin.index.statistics.person.text{% endtranschoice %}</span>
                             </li>
                         </ul>
 
@@ -36,7 +36,7 @@
 
                 <div class="widget searchWidget noBorderB">
                     <div class="whead">
-                        <input type="text" name="srch" class="ac ui-autocomplete-input" placeholder="{% trans %}admin.search.input{% endtrans %}" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+                        <input type="text" name="srch" class="ac ui-autocomplete-input" placeholder="{% trans from "form" %}admin.admin.dashboard.srch.placeholder{% endtrans %}" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
                         <button type="submit" name="swSubmit"><span class="icos-search"></span></button>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
         <div class="fluid">
             <div class="grid6">
                 <div class="widget">
-                    <div class="whead"><h6>{% trans %}admin.dashboard.widget.person.title{% endtrans %}</h6><div class="clear"></div></div>
+                    <div class="whead"><h6>{% trans from "views" %}admin.admin.index.widget.person.text{% endtrans %}</h6><div class="clear"></div></div>
                     <ul class="updates">
                         {% for person in persons %}
                         <li>
@@ -83,7 +83,7 @@
                                 return {
                                     label: item.name,
                                     id: item.id
-                                }
+                                };
                             }));
                         }
                     });

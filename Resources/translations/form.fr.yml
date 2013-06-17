@@ -1,0 +1,26 @@
+admin:
+  admin:
+    dashboard:
+      srch:
+        placeholder: Rechercher une personne
+        
+    login:
+      password:
+        placeholder: Mot de passe
+      remember:
+        label:
+          text: Se souvenir de moi
+      username:
+        placeholder: Nom d'utilisateur
+      submit:
+        value: Connexion
+      
+    tfoot:
+      action:
+        label:
+          text: Exécuter une action
+        select:
+          default: Choisir une action
+          delete: Supprimer
+        submit:
+          value: Envoyer
