@@ -29,7 +29,7 @@ class AdminController extends Controller
     public function indexAction()
     {
         $personManager      = $this->getPersonManager();
-        $personRepository   = $personManager->getDocumentRepository();
+        $personRepository   = $personManager->getRepository();
 
         $personDocument = $personRepository->findAll();
         $countPerson    = $personDocument->count();
@@ -62,7 +62,7 @@ class AdminController extends Controller
         }
 
         $documentManager = $this->getPersonManager();
-        $repository = $documentManager->getDocumentRepository();
+        $repository = $documentManager->getRepository();
 
         $rawDocuments = $repository->searchUser($request->query->get('text'));
 
@@ -92,7 +92,7 @@ class AdminController extends Controller
 
         if ('POST' === $request->getMethod()) {
             $manager      = $this->getPersonManager();
-            $repository   = $manager->getDocumentRepository();
+            $repository   = $manager->getRepository();
 
             $document = $repository->findOneById($parameters['to']);
 
