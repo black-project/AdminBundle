@@ -29,13 +29,11 @@ class AdminController extends Controller
     public function indexAction()
     {
         $personManager      = $this->getPersonManager();
-        $personRepository   = $personManager->getRepository();
+        
+        $countPerson        = $personManager->countAll();
 
-        $personDocument = $personRepository->findAll();
-        $countPerson    = $personDocument->count();
-
-        $persons = $personRepository->getLastPersons();
-
+        $persons            = $personManager->getLastPersons();
+        
         return array(
             'countPerson'   => $countPerson,
             'persons'       => $persons,
