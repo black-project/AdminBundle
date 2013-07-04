@@ -59,10 +59,7 @@ class AdminController extends Controller
             ));
         }
 
-        $documentManager = $this->getPersonManager();
-        $repository = $documentManager->getRepository();
-
-        $rawDocuments = $repository->searchUser($request->query->get('text'));
+        $rawDocuments = $this->getPersonManager()->searchPerson($request->query->get('text'));
 
         $documents = array();
 
