@@ -1,5 +1,9 @@
 admin:
   admin:
+    double_box:
+      input:
+        placeholder: Rechercher ...
+        
     dashboard:
       srch:
         placeholder: Rechercher une personne
