@@ -13,6 +13,119 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
 </div>
 {% endblock %}
 
+{% block double_box_widget %}
+<script language="javascript" type="text/javascript">
+        $(function() {
+        $.configureBoxes({
+            useFilters: true,
+            useCounters: true,
+            box1View: '{{ id }}1View',
+            box1Storage: '{{ id }}1Storage',
+            box1Filter: '{{ id }}1Filter',
+            box1Clear: '{{ id }}1Clear',
+            box1Counter: '{{ id }}1Counter',
+            box2View: '{{ id }}2View',
+            box2Storage: '{{ id }}2Storage',
+            box2Filter: '{{ id }}2Filter',
+            box2Clear: '{{ id }}2Clear',
+            box2Counter: '{{ id }}2Counter',
+            to1: 'to{{ id }}1',
+            to2: 'to{{ id }}2',
+            allTo1: 'allTo{{ id }}1',
+            allTo2: 'allTo{{ id }}2'
+        });
+    });
+</script>
+    {% spaceless %}
+<div class="leftBox">
+    <input type="text" id="{{ id }}1Filter" class="boxFilter" placeholder="Filter entries..." />
+        <button type="button" id="{{ id }}1Clear" class="dualBtn fltr">x</button><br />
+
+    <select id="{{ id }}1View" multiple="multiple" class="multiple" style="height:300px;">
+        {% if empty_value is not none %}
+            <option value="">{{ empty_value|trans({}, "form") }}</option>
+        {% endif %}
+        {% if preferred_choices|length > 0 %}
+            {% set options = preferred_choices %}
+                {{ block('left_box_widget_options') }}
+            {% if choices|length > 0 and separator is not none %}
+                <option disabled="disabled">{{ separator }}</option>
+            {% endif %}
+        {% endif %}
+        {% set options = choices %}
+        {{ block('left_box_widget_options') }}
+    </select>
+    <br/>
+    <span id="{{ id }}1Counter" class="countLabel"></span>
+    <div class="displayNone"><select id="{{ id }}1Storage"></select></div>
+</div>
+<div class="dualControl">
+    <button id="to{{ id }}2" type="button" class="dualBtn mr5 mb15">&nbsp;&gt;&nbsp;</button>
+    <button id="allTo{{ id }}2" type="button" class="dualBtn">&nbsp;&gt;&gt;&nbsp;</button><br />
+    <button id="to{{ id }}1" type="button" class="dualBtn mr5">&nbsp;&lt;&nbsp;</button>
+    <button id="allTo{{ id }}1" type="button" class="dualBtn">&nbsp;&lt;&lt;&nbsp;</button>
+</div>
+<div class="rightBox">
+    <input type="text" id="{{ id }}2Filter" class="boxFilter" placeholder="Filter entries..." />
+        <button type="button" id="{{ id }}2Clear" class="dualBtn fltr">x</button><br />
+    <select id="{{ id }}2View" name="{{ full_name }}" multiple="multiple" class="multiple" style="height:300px;">
+        {% if empty_value is not none %}
+            <option value="">{{ empty_value|trans({}, "form") }}</option>
+        {% endif %}
+        {% if preferred_choices|length > 0 %}
+            {% set options = preferred_choices %}
+                {{ block('right_box_widget_options') }}
+            {% if choices|length > 0 and separator is not none %}
+                <option disabled="disabled">{{ separator }}</option>
+            {% endif %}
+        {% endif %}
+        {% set options = choices %}
+        {{ block('right_box_widget_options') }}
+    </select><br/>
+    <span id="{{ id }}2Counter" class="countLabel"></span>
+    <div class="displayNone"><select id="{{ id }}2Storage"></select></div>
+</div>
+    {% endspaceless %}
+{% endblock %}
+
+{% block left_box_widget_options %}
+    {% spaceless %}
+        {% for group_label, choice in options %}
+            {% if choice is iterable %}
+                <optgroup label="{{ group_label|trans({}, "form") }}">
+                    {% set options = choice %}
+                    {{ block('left_box_widget_options') }}
+                </optgroup>
+            {% else %}
+                {% if choice is not selectedchoice(value) %}<option value="{{ choice.value }}" >{{ choice.label|trans({}, "form") }}</option>{% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endspaceless %}
+{% endblock left_box_widget_options %}
+
+{% block right_box_widget_options %}
+    {% spaceless %}
+        {% for group_label, choice in options %}
+            {% if choice is iterable %}
+                <optgroup label="{{ group_label|trans({}, "form") }}">
+                    {% set options = choice %}
+                    {{ block('right_box_widget_options') }}
+                </optgroup>
+            {% else %}
+                {% if choice is selectedchoice(value) %}<option value="{{ choice.value }}" >{{ choice.label|trans({}, "form") }}</option>{% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endspaceless %}
+{% endblock right_box_widget_options %}
+
+{% block document_double_box_widget %}
+    {{ block('double_box_widget') }}
+{% endblock %}
+
+{% block entity_double_box_widget %}
+    {{ block('double_box_widget') }}
+{% endblock %}
+
 {% block choice_widget_options %}
     {% spaceless %}
         {% for group_label, choice in options %}
