@@ -15,10 +15,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
+/**
+ * AdminSecurityController
+ */
 class AdminSecurityController extends Controller
 {
     /**
      * @Template()
+     * 
+     * @return Template
      */
     public function loginAction()
     {
