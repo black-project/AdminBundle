@@ -17,23 +17,29 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
+ * AdminController
+ * 
  * @Route("/admin")
  */
 class AdminController extends Controller
 {
     /**
+     * IndexAction
+     * 
      * @Route("/", name="admin_index")
      * @Secure(roles="ROLE_ADMIN")
      * @Template()
+     * 
+     * @return Template
      */
     public function indexAction()
     {
         $personManager      = $this->getPersonManager();
-        
+
         $countPerson        = $personManager->countAll();
 
         $persons            = $personManager->getLastPersons();
-        
+
         return array(
             'countPerson'   => $countPerson,
             'persons'       => $persons,
@@ -45,6 +51,8 @@ class AdminController extends Controller
      * @Secure(roles="ROLE_ADMIN")
      * @Method({"GET"})
      * @Template()
+     * 
+     * @return Template
      */
     public function searchJsonAction()
     {
@@ -79,6 +87,8 @@ class AdminController extends Controller
      * @Route("/sendmail", name="admin_sendmail")
      * @Secure(roles="ROLE_ADMIN")
      * @Method({"POST"})
+     * 
+     * @return Template
      */
     public function sendMail()
     {
