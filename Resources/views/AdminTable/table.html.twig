@@ -22,7 +22,7 @@
 
         <tbody>
             {% for document in documents %}
-                {% include 'BlackEngineBundle:AdminPerson:row.html.twig' with {'document': document} %}
+                {% include 'BlackAdminBundle:AdminTable:row.html.twig' with {'document': document} %}
             {% else %}
             <tr class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
                 <td colspan="3">{% trans from "views" %}admin.admin.table.record.empty.text{% endtrans %}</td>
