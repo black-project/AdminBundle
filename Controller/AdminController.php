@@ -119,6 +119,6 @@ class AdminController extends Controller
 
     protected function getPersonManager()
     {
-        return $this->get('black_engine.manager.person');
+        return $this->get('black_person.manager.person');
     }
 }
