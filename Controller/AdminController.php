@@ -1,13 +1,14 @@
 <?php
 
 /*
- * This file is part of the Blackengine package.
+ * This file is part of the Black package.
  *
  * (c) Alexandre Balmes <albalmes@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace Black\Bundle\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -18,7 +19,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
  * AdminController
- * 
+ *
+ * @package Black\Bundle\AdminBundle
+ * @author  Alexandre Balmes <albalmes@gmail.com>
+ * @license http://opensource.org/licenses/mit-license.php MIT
+ *
  * @Route("/admin")
  */
 class AdminController extends Controller
@@ -88,7 +93,8 @@ class AdminController extends Controller
      * @Secure(roles="ROLE_ADMIN")
      * @Method({"POST"})
      * 
-     * @return Template
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function sendMail()
     {
@@ -117,6 +123,9 @@ class AdminController extends Controller
         return $this->redirect($this->generateUrl('admin_person_show', array('id' => $parameters['to'])));
     }
 
+    /**
+     * @return object
+     */
     protected function getPersonManager()
     {
         return $this->get('black_person.manager.person');
