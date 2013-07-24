@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Blackengine package.
+ * This file is part of the Black package.
  *
  * (c) Alexandre Balmes <albalmes@gmail.com>
  *
@@ -17,6 +17,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
  * AdminSecurityController
+ *
+ * @package Black\Bundle\AdminBundle
+ * @author  Alexandre Balmes <albalmes@gmail.com>
+ * @license http://opensource.org/licenses/mit-license.php MIT
  */
 class AdminSecurityController extends Controller
 {
