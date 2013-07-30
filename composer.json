@@ -1,0 +1,9 @@
+{
+    "name": "black/admin-bundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "autoload": {
+        "psr-0": { "Black\\AdminBundle": "" }
+    },
+    "target-dir": "Black/AdminBundle"
+}
