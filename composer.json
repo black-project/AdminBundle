@@ -18,7 +18,7 @@
         "symfony/form": "~2.3"
     },
     "autoload": {
-        "psr-0": { "Black\\AdminBundle": "" }
+        "psr-0": { "Black\\Bundle\\AdminBundle": "" }
     },
-    "target-dir": "Black/AdminBundle"
+    "target-dir": "Black/Bundle/AdminBundle"
 }
