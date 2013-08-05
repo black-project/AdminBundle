@@ -135,7 +135,9 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                     {{ block('choice_widget_options') }}
                 </optgroup>
             {% else %}
-                <option value="{{ choice.value }}"{% if choice is selectedchoice(value) %} selected="selected"{% endif %}>{{ choice.label|trans({}, "form") }}</option>
+                {% if multiple and choice.value != "other" or not multiple %}
+                    <option value="{{ choice.value }}"{% if choice is selectedchoice(value) %} selected="selected"{% endif %}>{{ choice.label|trans({}, "form") }}</option>
+                {% endif %}
             {% endif %}
         {% endfor %}
     {% endspaceless %}
