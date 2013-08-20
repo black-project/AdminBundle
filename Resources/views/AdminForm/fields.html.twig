@@ -13,8 +13,18 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
 </div>
 {% endblock %}
 
+{% block tag_widget %}
+
+    {% spaceless %}
+
+        <input type="text" id="{{ id }}" name="{{ full_name }}" class="tags" value="{{ value }}" />
+
+    {% endspaceless %}
+
+{% endblock %}
+
 {% block double_box_widget %}
-<script language="javascript" type="text/javascript">
+<script>
         $(function() {
         $.configureBoxes({
             useFilters: true,
