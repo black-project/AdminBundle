@@ -46,7 +46,7 @@ class TextToTagTransformer implements DataTransformerInterface
     public function reverseTransform($keywords)
     {
         if (!$keywords) {
-            return;
+            return array();
         }
 
         $keywords = explode(',', $keywords);
