@@ -13,8 +13,18 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
 </div>
 {% endblock %}
 
+{% block tag_widget %}
+
+    {% spaceless %}
+
+        <input type="text" id="{{ id }}" name="{{ full_name }}" class="tags" value="{{ value }}" />
+
+    {% endspaceless %}
+
+{% endblock %}
+
 {% block double_box_widget %}
-<script language="javascript" type="text/javascript">
+<script>
         $(function() {
         $.configureBoxes({
             useFilters: true,
@@ -244,10 +254,52 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                 {{ form_rest(form) }}
             </div>
             <div class="clear"></div>
+            <script>
+                function {{ id }}Integrity() {}
+                var {{ id }}Count = 0;
+                jQuery(document).ready(function() {
+                    {{ id }}Count = jQuery('#{{ id }}').children('.formRow').length;
+                    jQuery('#{{ id }}').children('.formRow').each(function() {
+                        add_{{ id }}FormDeleteLink($(this));
+                        {{ id }}Integrity();
+                    });
+                });
+                function JQueryUIApplyStyle($newDiv) {
+                    $newDiv.find("select, .check, .check :checkbox, input:radio, input:file").uniform();
+                }
+                function add_{{ id }}FormDeleteLink($tagFormDiv) {
+                    var $removeFormB = $('<a href="#" class="add buttonS bRed mt10">{% trans  from "views" %}person.admin.js.remove.text{% endtrans %}</a>');
+                    $tagFormDiv.append($removeFormB);
 
+                    $removeFormB.on('click', function(e) {
+                        {{ id }}Count--;
+                        e.preventDefault();
+                        $tagFormDiv.remove();
+                        {{ id }}Integrity();
+                    });
+                }
+            </script>
             {% for attrname, attrvalue in attr %}
                 {% if 'add' == attrname %}
-                    <a href="#" id="{{ attrvalue }}" title="{% trans from "views" %}admin.admin.fields.add.title{% endtrans %}" class="add buttonS bBlue mt10">{% trans from "views" %}admin.admin.fields.add.text{% endtrans %}</a>
+                    <a href="#" id="{{ attrvalue }}" title="{% trans from "views" %}admin.admin.fields.add.title{% endtrans %}" class="add buttonS bBlue mt10">
+                        {% trans from "views" %}admin.admin.fields.add.text{% endtrans %}
+                    </a>
+                    <script>
+                    jQuery(document).ready(function() {
+                        jQuery('#{{ attrvalue }}').click(function() {
+                            var {{ id }}List = jQuery('#{{ id }}');
+                            var newWidget = {{ id }}List.attr('data-prototype');
+                            newWidget = newWidget.replace(/__name__/g, {{ id }}Count);
+                            {{ id }}Count++;
+                            var newDiv = jQuery('<div class="formRow noBorderB"></div>').html(newWidget);
+                            add_{{ id }}FormDeleteLink(newDiv);
+                            newDiv.appendTo({{ id }}List);
+                            {{ id }}Integrity();
+                            JQueryUIApplyStyle(newDiv);
+                            return false;
+                        });
+                    });
+                    </script>
                 {% endif %}
             {% endfor %}
 
