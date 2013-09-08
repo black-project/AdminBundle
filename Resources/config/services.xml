@@ -16,9 +16,5 @@
         <service id="black_admin.form.type.entity_double_box" class="Black\Bundle\AdminBundle\Form\Type\EntityDoubleBoxType">
             <tag name="form.type" alias="entity_double_box" />
         </service>
-
-        <service id="black_admin.form.type.tag" class="Black\Bundle\AdminBundle\Form\Type\TagType">
-            <tag name="form.type" alias="tag" />
-        </service>
     </services>
 </container>
