@@ -268,7 +268,7 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                     $newDiv.find("select, .check, .check :checkbox, input:radio, input:file").uniform();
                 }
                 function add_{{ id }}FormDeleteLink($tagFormDiv) {
-                    var $removeFormB = $('<a href="#" class="add buttonS bRed mt10">{% trans  from "views" %}person.admin.js.remove.text{% endtrans %}</a>');
+                    var $removeFormB = $('<a href="#" class="add buttonS bRed mt10" title="{% trans  from "views" %}admin.admin.js.remove.text{% endtrans %}">{% trans  from "views" %}admin.admin.js.remove.text{% endtrans %}</a>');
                     $tagFormDiv.append($removeFormB);
 
                     $removeFormB.on('click', function(e) {
@@ -276,6 +276,46 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                         e.preventDefault();
                         $tagFormDiv.remove();
                         {{ id }}Integrity();
+                    });
+                }
+                function add_{{ id }}FormSortableLink($tagFormDiv) {
+                    var $upFormB = $('<a href="#" class="up buttonS bBlue mt10" style="margin-left:7px;" title="{% trans  from "views" %}admin.admin.js.up.text{% endtrans %}">{% trans  from "views" %}admin.admin.js.up.text{% endtrans %}</a>');
+                    var $downFormB = $('<a href="#" class="down buttonS bBlue mt10" style="margin-left:7px;" title="{% trans  from "views" %}admin.admin.js.down.text{% endtrans %}">{% trans  from "views" %}admin.admin.js.down.text{% endtrans %}</a>');
+                    $tagFormDiv.append($upFormB);
+                    $tagFormDiv.append($downFormB);
+                    $upFormB.on('click', function(e) {
+                        e.preventDefault();
+                        switchFields($(this).parent().find(":input"), $(this).parent().prev("div").find(":input"));
+                        {{ id }}Integrity();
+                    });
+                    $downFormB.on('click', function(e) {
+                        e.preventDefault();
+                        switchFields($(this).parent().find(":input"), $(this).parent().next("div").find(":input"));
+                        {{ id }}Integrity();
+                    });
+                }
+                function switchFields(from, to) {
+                    var from_form = from.serializeArray();
+                    var to_form = to.serializeArray();
+                    if(to_form.length > 0 && from_form.length > 0) {
+                        fillFields(to, from_form);
+                        fillFields(from, to_form);
+                    }
+                    $.uniform.update();
+                }
+                function fillFields(element, form) {
+                    $(element).each(function(index, el){
+                        if($(el).is("select")) {
+                            $(el).find("option").each(function(i, opt) {
+                                if($(opt).val() == form[index].value) {
+                                    $(opt).attr('selected', 'selected');
+                                } else {
+                                    $(opt).removeAttr('selected');
+                                }
+                            });
+                        } else {
+                            $(el).val(form[index].value);
+                        }
                     });
                 }
             </script>
@@ -293,6 +333,27 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                             {{ id }}Count++;
                             var newDiv = jQuery('<div class="formRow noBorderB"></div>').html(newWidget);
                             add_{{ id }}FormDeleteLink(newDiv);
+                            newDiv.appendTo({{ id }}List);
+                            {{ id }}Integrity();
+                            JQueryUIApplyStyle(newDiv);
+                            return false;
+                        });
+                    });
+                    </script>
+                {% elseif 'add-sort' == attrname %}
+                    <a href="#" id="{{ attrvalue }}" title="{% trans from "views" %}admin.admin.fields.add.title{% endtrans %}" class="add buttonS bBlue mt10">
+                        {% trans from "views" %}admin.admin.fields.add.text{% endtrans %}
+                    </a>
+                    <script>
+                    jQuery(document).ready(function() {
+                        jQuery('#{{ attrvalue }}').click(function() {
+                            var {{ id }}List = jQuery('#{{ id }}');
+                            var newWidget = {{ id }}List.attr('data-prototype');
+                            newWidget = newWidget.replace(/__name__/g, {{ id }}Count);
+                            {{ id }}Count++;
+                            var newDiv = jQuery('<div class="formRow noBorderB"></div>').html(newWidget);
+                            add_{{ id }}FormDeleteLink(newDiv);
+                            add_{{ id }}FormSortableLink(newDiv);
                             newDiv.appendTo({{ id }}List);
                             {{ id }}Integrity();
                             JQueryUIApplyStyle(newDiv);

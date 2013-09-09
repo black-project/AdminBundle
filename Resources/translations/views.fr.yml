@@ -71,6 +71,14 @@ admin:
       delete:
         title: Supprimer
     
+    js:
+      down:
+        text: Descendre
+      up:
+        text: Monter
+      remove:
+        text: Enlever
+    
     secondaryNav:
       dashboard:
         text: Tableau de bord
