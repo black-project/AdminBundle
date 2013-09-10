@@ -128,14 +128,6 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
     {% endspaceless %}
 {% endblock right_box_widget_options %}
 
-{% block document_double_box_widget %}
-    {{ block('double_box_widget') }}
-{% endblock %}
-
-{% block entity_double_box_widget %}
-    {{ block('double_box_widget') }}
-{% endblock %}
-
 {% block choice_widget_options %}
     {% spaceless %}
         {% for group_label, choice in options %}
