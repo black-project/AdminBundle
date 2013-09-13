@@ -321,7 +321,8 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                         jQuery('#{{ attrvalue }}').click(function() {
                             var {{ id }}List = jQuery('#{{ id }}');
                             var newWidget = {{ id }}List.attr('data-prototype');
-                            newWidget = newWidget.replace(/__name__/g, {{ id }}Count);
+                            var exp = new RegExp("__na"+"me__(([\[\]_a-zA-Z0-9]+__na"+"me__){0,})","g");
+                            newWidget = newWidget.replace(exp, {{ id }}Count+"$1");
                             {{ id }}Count++;
                             var newDiv = jQuery('<div class="formRow noBorderB"></div>').html(newWidget);
                             add_{{ id }}FormDeleteLink(newDiv);
@@ -341,7 +342,8 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                         jQuery('#{{ attrvalue }}').click(function() {
                             var {{ id }}List = jQuery('#{{ id }}');
                             var newWidget = {{ id }}List.attr('data-prototype');
-                            newWidget = newWidget.replace(/__name__/g, {{ id }}Count);
+                            var exp = new RegExp("__na"+"me__(([\[\]_a-zA-Z0-9]+__na"+"me__){0,})","g");
+                            newWidget = newWidget.replace(exp, {{ id }}Count+"$1");
                             {{ id }}Count++;
                             var newDiv = jQuery('<div class="formRow noBorderB"></div>').html(newWidget);
                             add_{{ id }}FormDeleteLink(newDiv);
