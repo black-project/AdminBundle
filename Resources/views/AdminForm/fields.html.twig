@@ -316,15 +316,15 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                         {% trans from "views" %}admin.admin.fields.add.text{% endtrans %}
                     </a>
                     <script>
-                    <![CDATA[
                     jQuery(document).ready(function(){
                         jQuery('#{{ attrvalue }}-{{ id }}').click(function() {
                             var {{ id }}List = jQuery('#{{ id }}');
-                            var newWidget = {{ id }}List.attr('data-prototype').replace("</script>", "<\/script>");
+                            var newWidget = {{ id }}List.attr('data-prototype');
                             var exp = new RegExp("__na"+"me__(([\[\]_a-zA-Z0-9]+__na"+"me__){0,})","g");
                             newWidget = newWidget.replace(exp, {{ id }}Count+"$1");
                             {{ id }}Count++;
-                            var newDiv = jQuery('<div class="formRow noBorderB"></div>').html(newWidget);
+                            var newDiv = jQuery('<div class="formRow noBorderB"></div>');
+                            newDiv[0].innerHTML = newWidget;
                             add_{{ id }}FormDeleteLink(newDiv);
                             {% if 'sort' == attrname_split|last %}
                                 add_{{ id }}FormSortableLink(newDiv);
@@ -335,7 +335,6 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                             return false;
                         });
                     });
-                    ]]>
                     </script>
                 {% endif %}
             {% endfor %}
