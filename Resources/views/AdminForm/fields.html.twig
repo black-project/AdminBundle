@@ -225,16 +225,14 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
 
                 {% for rows in form %}
                 <div class="formRow">
-                    {% set fieldNum = 1 %}
                     {% for row in rows %}
-                        <div class="formRow field{{ fieldNum }} {% if loop.last %}noBorderB{% endif %}">
+                        <div class="formRow {% if loop.last %}noBorderB{% endif %}">
                             <div class="grid3">{{ form_label(row) }}</div>
                             <div class="grid9">{{ form_widget(row) }}</div>
                             <div class="clear"></div>
                         </div>
-                        {% set fieldNum = fieldNum + 1 %}
                     {% else %}
-                        <div class="formRow field{{ fieldNum }} noBorderB">
+                        <div class="formRow noBorderB">
                             <div class="grid3">{{ form_label(rows) }}</div>
                             <div class="grid9">{{ form_widget(rows) }}</div>
                             <div class="clear"></div>
@@ -350,12 +348,11 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
     {% spaceless %}
         {% set fieldNum = 1 %}
         {% for row in prototype %}
-            <div class="formRow field{{ fieldNum }} {% if loop.last %}noBorderB{% endif %}">
+            <div class="formRow {% if loop.last %}noBorderB{% endif %}">
                 <div class="grid3">{{ form_label(row) }}</div>
                 <div class="grid9">{{ form_widget(row) }}</div>
                 <div class="clear"></div>
             </div>
-            {% set fieldNum = fieldNum + 1 %}
         {% else %}
             <div class="formRow noBorderB">
                 <div class="grid3">{{ form_label(prototype) }}</div>
