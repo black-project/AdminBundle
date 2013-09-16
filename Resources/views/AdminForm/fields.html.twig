@@ -316,6 +316,7 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                         {% trans from "views" %}admin.admin.fields.add.text{% endtrans %}
                     </a>
                     <script>
+                    <![CDATA[
                     jQuery(document).ready(function(){
                         jQuery('#{{ attrvalue }}-{{ id }}').click(function() {
                             var {{ id }}List = jQuery('#{{ id }}');
@@ -334,6 +335,7 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                             return false;
                         });
                     });
+                    ]]>
                     </script>
                 {% endif %}
             {% endfor %}
