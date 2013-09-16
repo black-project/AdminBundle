@@ -288,30 +288,6 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                                 {{ id }}Integrity();
                             });
                         }
-                        function switchFields(from, to) {
-                            var from_form = from.serializeArray();
-                            var to_form = to.serializeArray();
-                            if(to_form.length > 0 && from_form.length > 0) {
-                                fillFields(to, from_form);
-                                fillFields(from, to_form);
-                            }
-                            $.uniform.update();
-                        }
-                        function fillFields(element, form) {
-                            $(element).each(function(index, el){
-                                if($(el).is("select")) {
-                                    $(el).find("option").each(function(i, opt) {
-                                        if($(opt).val() == form[index].value) {
-                                            $(opt).attr('selected', 'selected');
-                                        } else {
-                                            $(opt).removeAttr('selected');
-                                        }
-                                    });
-                                } else {
-                                    $(el).val(form[index].value);
-                                }
-                            });
-                        }
                     {% endif %}
                     jQuery(document).ready(function(){
                         jQuery('#{{ attrvalue }}-{{ id }}').click(function() {
