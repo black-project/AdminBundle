@@ -252,7 +252,8 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                     <script>
                     function {{ id }}Integrity() {}
                     var {{ id }}Count = 0;
-                    {{ id }}Count = jQuery('#{{ id }}').children('.formRow').length;
+                    var {{ id }}IndexIntegrity = 0;
+                    {{ id }}IndexIntegrity = {{ id }}Count = jQuery('#{{ id }}').children('.formRow').length;
                     jQuery('#{{ id }}').children('.formRow').each(function() {
                         add_{{ id }}FormDeleteLink($(this));
                         {{ id }}Integrity();
@@ -269,6 +270,7 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                             e.preventDefault();
                             $tagFormDiv.remove();
                             {{ id }}Integrity();
+                            $.uniform.update();
                         });
                     }
                     {% if 'sort' == attrname_split|last %}
@@ -318,8 +320,8 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                             var {{ id }}List = jQuery('#{{ id }}');
                             var newWidget = {{ id }}List.attr('data-prototype');
                             var exp = new RegExp("__na"+"me__(([\[\]_a-zA-Z0-9]+__na"+"me__){0,})","g");
-                            newWidget = newWidget.replace(exp, {{ id }}Count+"$1");
-                            {{ id }}Count++;
+                            newWidget = newWidget.replace(exp, {{ id }}IndexIntegrity+"$1");
+                            {{ id }}Count++; {{ id }}IndexIntegrity++;
                             var newDiv = jQuery('<div class="formRow noBorderB"></div>');
                             newDiv[0].innerHTML = newWidget;
                             add_{{ id }}FormDeleteLink(newDiv);
