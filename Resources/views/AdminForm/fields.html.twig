@@ -251,50 +251,53 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                     function {{ id }}Integrity() {}
                     var {{ id }}Count = 0;
                     var {{ id }}IndexIntegrity = 0;
-                    {{ id }}IndexIntegrity = {{ id }}Count = jQuery('#{{ id }}').children('.formRow').length;
-                    jQuery('#{{ id }}').children('.formRow').each(function() {
-                        add_{{ id }}FormDeleteLink($(this));
-                        {{ id }}Integrity();
-                    });
-                    function JQueryUIApplyStyle($newDiv) {
-                        $newDiv.find("select, .check, .check :checkbox, input:radio, input:file").uniform();
-                    }
-                    function add_{{ id }}FormDeleteLink($tagFormDiv) {
-                        var $removeFormB = $('<a href="#" class="add buttonS bRed mt10" title="{% trans  from "views" %}admin.admin.js.remove.text{% endtrans %}">{% trans  from "views" %}admin.admin.js.remove.text{% endtrans %}</a>');
-                        $tagFormDiv.append($removeFormB);
-
-                        $removeFormB.on('click', function(e) {
-                            {{ id }}Count--;
-                            e.preventDefault();
-                            $tagFormDiv.remove();
+                    jQuery(document).ready(function(){
+                        {{ id }}IndexIntegrity = {{ id }}Count = jQuery('#{{ id }}').children('.formRow').length;
+                        jQuery('#{{ id }}').children('.formRow').each(function() {
+                            add_{{ id }}FormDeleteLink($(this));
                             {{ id }}Integrity();
-                            $.uniform.update();
                         });
-                    }
+                        function add_{{ id }}FormDeleteLink($tagFormDiv) {
+                            var $removeFormB = $('<a href="#" class="add buttonS bRed mt10" title="{% trans  from "views" %}admin.admin.js.remove.text{% endtrans %}">{% trans  from "views" %}admin.admin.js.remove.text{% endtrans %}</a>');
+                            
+                            if($tagFormDiv.find("a.add").length == 0) {
+                                $tagFormDiv.append($removeFormB);
+                                $removeFormB.on('click', function(e) {
+                                    {{ id }}Count--;
+                                    e.preventDefault();
+                                    $tagFormDiv.remove();
+                                    {{ id }}Integrity();
+                                    $.uniform.update();
+                                });
+                            }
+                        }
                     {% if 'sort' == attrname_split|last %}
                         function add_{{ id }}FormSortableLink($tagFormDiv) {
                             var $upFormB = $('<a href="#" class="up buttonS bBlue mt10" style="margin-left:7px;" title="{% trans  from "views" %}admin.admin.js.up.text{% endtrans %}">{% trans  from "views" %}admin.admin.js.up.text{% endtrans %}</a>');
                             var $downFormB = $('<a href="#" class="down buttonS bBlue mt10" style="margin-left:7px;" title="{% trans  from "views" %}admin.admin.js.down.text{% endtrans %}">{% trans  from "views" %}admin.admin.js.down.text{% endtrans %}</a>');
-                            $tagFormDiv.append($upFormB);
-                            $tagFormDiv.append($downFormB);
-                            $upFormB.on('click', function(e) {
-                                e.preventDefault();
-                                switchFields($(this).parent().find(":input"), $(this).parent().prev("div").find(":input"));
-                                {{ id }}Integrity();
-                            });
-                            $downFormB.on('click', function(e) {
-                                e.preventDefault();
-                                switchFields($(this).parent().find(":input"), $(this).parent().next("div").find(":input"));
-                                {{ id }}Integrity();
-                            });
+                            
+                            if(($tagFormDiv.find("a.up").length + $tagFormDiv.find("a.down").length) == 0) {
+                                $tagFormDiv.append($upFormB);
+                                $tagFormDiv.append($downFormB);
+                                $upFormB.on('click', function(e) {
+                                    e.preventDefault();
+                                    switchFields($(this).parent().find(":input"), $(this).parent().prev("div").find(":input"));
+                                    {{ id }}Integrity();
+                                });
+                                $downFormB.on('click', function(e) {
+                                    e.preventDefault();
+                                    switchFields($(this).parent().find(":input"), $(this).parent().next("div").find(":input"));
+                                    {{ id }}Integrity();
+                                });
+                            }
                         }
                     {% endif %}
-                    jQuery(document).ready(function(){
                         jQuery('#{{ attrvalue }}-{{ id }}').click(function() {
                             var {{ id }}List = jQuery('#{{ id }}');
                             var newWidget = {{ id }}List.attr('data-prototype');
-                            var exp = new RegExp("__na"+"me__(([\[\]_a-zA-Z0-9]+__na"+"me__){0,})","g");
+                            var exp = new RegExp(/__n[a]{1}me__(([\[\]_a-zA-Z0-9]+__n[a]{1}me__){0,})/g);
                             newWidget = newWidget.replace(exp, {{ id }}IndexIntegrity+"$1");
+                            console.log(newWidget);
                             {{ id }}Count++; {{ id }}IndexIntegrity++;
                             var newDiv = jQuery('<div class="formRow noBorderB"></div>');
                             newDiv[0].innerHTML = newWidget;
