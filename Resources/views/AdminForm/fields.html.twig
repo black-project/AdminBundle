@@ -249,12 +249,10 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
             <script>
                 function {{ id }}Integrity() {}
                 var {{ id }}Count = 0;
-                jQuery(document).ready(function() {
-                    {{ id }}Count = jQuery('#{{ id }}').children('.formRow').length;
-                    jQuery('#{{ id }}').children('.formRow').each(function() {
-                        add_{{ id }}FormDeleteLink($(this));
-                        {{ id }}Integrity();
-                    });
+                {{ id }}Count = jQuery('#{{ id }}').children('.formRow').length;
+                jQuery('#{{ id }}').children('.formRow').each(function() {
+                    add_{{ id }}FormDeleteLink($(this));
+                    {{ id }}Integrity();
                 });
                 function JQueryUIApplyStyle($newDiv) {
                     $newDiv.find("select, .check, .check :checkbox, input:radio, input:file").uniform();
@@ -313,46 +311,42 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
             </script>
             {% for attrname, attrvalue in attr %}
                 {% if 'add' == attrname %}
-                    <a href="#" id="{{ attrvalue }}" title="{% trans from "views" %}admin.admin.fields.add.title{% endtrans %}" class="add buttonS bBlue mt10">
+                    <a href="#" id="{{ attrvalue }}-{{ id }}" title="{% trans from "views" %}admin.admin.fields.add.title{% endtrans %}" class="add buttonS bBlue mt10">
                         {% trans from "views" %}admin.admin.fields.add.text{% endtrans %}
                     </a>
                     <script>
-                    jQuery(document).ready(function() {
-                        jQuery('#{{ attrvalue }}').click(function() {
-                            var {{ id }}List = jQuery('#{{ id }}');
-                            var newWidget = {{ id }}List.attr('data-prototype');
-                            var exp = new RegExp("__na"+"me__(([\[\]_a-zA-Z0-9]+__na"+"me__){0,})","g");
-                            newWidget = newWidget.replace(exp, {{ id }}Count+"$1");
-                            {{ id }}Count++;
-                            var newDiv = jQuery('<div class="formRow noBorderB"></div>').html(newWidget);
-                            add_{{ id }}FormDeleteLink(newDiv);
-                            newDiv.appendTo({{ id }}List);
-                            {{ id }}Integrity();
-                            JQueryUIApplyStyle(newDiv);
-                            return false;
-                        });
+                    jQuery('#{{ attrvalue }}-{{ id }}').click(function() {
+                        var {{ id }}List = jQuery('#{{ id }}');
+                        var newWidget = {{ id }}List.attr('data-prototype');
+                        var exp = new RegExp("__na"+"me__(([\[\]_a-zA-Z0-9]+__na"+"me__){0,})","g");
+                        newWidget = newWidget.replace(exp, {{ id }}Count+"$1");
+                        {{ id }}Count++;
+                        var newDiv = jQuery('<div class="formRow noBorderB"></div>').html(newWidget);
+                        add_{{ id }}FormDeleteLink(newDiv);
+                        newDiv.appendTo({{ id }}List);
+                        {{ id }}Integrity();
+                        JQueryUIApplyStyle(newDiv);
+                        return false;
                     });
                     </script>
                 {% elseif 'add-sort' == attrname %}
-                    <a href="#" id="{{ attrvalue }}" title="{% trans from "views" %}admin.admin.fields.add.title{% endtrans %}" class="add buttonS bBlue mt10">
+                    <a href="#" id="{{ attrvalue }}-{{ id }}" title="{% trans from "views" %}admin.admin.fields.add.title{% endtrans %}" class="add buttonS bBlue mt10">
                         {% trans from "views" %}admin.admin.fields.add.text{% endtrans %}
                     </a>
                     <script>
-                    jQuery(document).ready(function() {
-                        jQuery('#{{ attrvalue }}').click(function() {
-                            var {{ id }}List = jQuery('#{{ id }}');
-                            var newWidget = {{ id }}List.attr('data-prototype');
-                            var exp = new RegExp("__na"+"me__(([\[\]_a-zA-Z0-9]+__na"+"me__){0,})","g");
-                            newWidget = newWidget.replace(exp, {{ id }}Count+"$1");
-                            {{ id }}Count++;
-                            var newDiv = jQuery('<div class="formRow noBorderB"></div>').html(newWidget);
-                            add_{{ id }}FormDeleteLink(newDiv);
-                            add_{{ id }}FormSortableLink(newDiv);
-                            newDiv.appendTo({{ id }}List);
-                            {{ id }}Integrity();
-                            JQueryUIApplyStyle(newDiv);
-                            return false;
-                        });
+                    jQuery('#{{ attrvalue }}-{{ id }}').click(function() {
+                        var {{ id }}List = jQuery('#{{ id }}');
+                        var newWidget = {{ id }}List.attr('data-prototype');
+                        var exp = new RegExp("__na"+"me__(([\[\]_a-zA-Z0-9]+__na"+"me__){0,})","g");
+                        newWidget = newWidget.replace(exp, {{ id }}Count+"$1");
+                        {{ id }}Count++;
+                        var newDiv = jQuery('<div class="formRow noBorderB"></div>').html(newWidget);
+                        add_{{ id }}FormDeleteLink(newDiv);
+                        add_{{ id }}FormSortableLink(newDiv);
+                        newDiv.appendTo({{ id }}List);
+                        {{ id }}Integrity();
+                        JQueryUIApplyStyle(newDiv);
+                        return false;
                     });
                     </script>
                 {% endif %}
