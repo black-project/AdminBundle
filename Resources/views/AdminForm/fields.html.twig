@@ -260,7 +260,7 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                         function add_{{ id }}FormDeleteLink($tagFormDiv) {
                             var $removeFormB = $('<a href="#" class="add buttonS bRed mt10" title="{% trans  from "views" %}admin.admin.js.remove.text{% endtrans %}">{% trans  from "views" %}admin.admin.js.remove.text{% endtrans %}</a>');
                             
-                            if($tagFormDiv.find("a.add").length == 0) {
+                            if($tagFormDiv.children("a.add").length === 0) {
                                 $tagFormDiv.append($removeFormB);
                                 $removeFormB.on('click', function(e) {
                                     {{ id }}Count--;
@@ -276,7 +276,7 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                             var $upFormB = $('<a href="#" class="up buttonS bBlue mt10" style="margin-left:7px;" title="{% trans  from "views" %}admin.admin.js.up.text{% endtrans %}">{% trans  from "views" %}admin.admin.js.up.text{% endtrans %}</a>');
                             var $downFormB = $('<a href="#" class="down buttonS bBlue mt10" style="margin-left:7px;" title="{% trans  from "views" %}admin.admin.js.down.text{% endtrans %}">{% trans  from "views" %}admin.admin.js.down.text{% endtrans %}</a>');
                             
-                            if(($tagFormDiv.find("a.up").length + $tagFormDiv.find("a.down").length) == 0) {
+                            if(($tagFormDiv.children("a.up").length + $tagFormDiv.children("a.down").length) === 0) {
                                 $tagFormDiv.append($upFormB);
                                 $tagFormDiv.append($downFormB);
                                 $upFormB.on('click', function(e) {
