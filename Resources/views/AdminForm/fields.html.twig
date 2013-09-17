@@ -255,6 +255,9 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                         {{ id }}IndexIntegrity = {{ id }}Count = jQuery('#{{ id }}').children('.formRow').length;
                         jQuery('#{{ id }}').children('.formRow').each(function() {
                             add_{{ id }}FormDeleteLink($(this));
+                            {% if 'sort' == attrname_split|last %}
+                            add_{{ id }}FormSortableLink($(this));
+                            {% endif %}
                             {{ id }}Integrity();
                         });
                         function add_{{ id }}FormDeleteLink($tagFormDiv) {
@@ -303,7 +306,7 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                             newDiv[0].innerHTML = newWidget;
                             add_{{ id }}FormDeleteLink(newDiv);
                             {% if 'sort' == attrname_split|last %}
-                                add_{{ id }}FormSortableLink(newDiv);
+                            add_{{ id }}FormSortableLink(newDiv);
                             {% endif %}
                             newDiv.appendTo({{ id }}List);
                             {{ id }}Integrity();
