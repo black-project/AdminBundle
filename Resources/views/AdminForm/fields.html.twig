@@ -300,7 +300,6 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                             var newWidget = {{ id }}List.attr('data-prototype');
                             var exp = new RegExp(/__n[a]{1}me__(([\[\]_a-zA-Z0-9]+__n[a]{1}me__){0,})/g);
                             newWidget = newWidget.replace(exp, {{ id }}IndexIntegrity+"$1");
-                            console.log(newWidget);
                             {{ id }}Count++; {{ id }}IndexIntegrity++;
                             var newDiv = jQuery('<div class="formRow noBorderB"></div>');
                             newDiv[0].innerHTML = newWidget;
