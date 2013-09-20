@@ -255,12 +255,15 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                         {{ id }}IndexIntegrity = {{ id }}Count = jQuery('#{{ id }}').children('.formRow').length;
                         jQuery('#{{ id }}').children('.formRow').each(function() {
                             add_{{ id }}FormDeleteLink($(this));
+                            {% if 'sort' == attrname_split|last %}
+                            add_{{ id }}FormSortableLink($(this));
+                            {% endif %}
                             {{ id }}Integrity();
                         });
                         function add_{{ id }}FormDeleteLink($tagFormDiv) {
                             var $removeFormB = $('<a href="#" class="add buttonS bRed mt10" title="{% trans  from "views" %}admin.admin.js.remove.text{% endtrans %}">{% trans  from "views" %}admin.admin.js.remove.text{% endtrans %}</a>');
                             
-                            if($tagFormDiv.find("a.add").length == 0) {
+                            if($tagFormDiv.children("a.add").length === 0) {
                                 $tagFormDiv.append($removeFormB);
                                 $removeFormB.on('click', function(e) {
                                     {{ id }}Count--;
@@ -276,7 +279,7 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                             var $upFormB = $('<a href="#" class="up buttonS bBlue mt10" style="margin-left:7px;" title="{% trans  from "views" %}admin.admin.js.up.text{% endtrans %}">{% trans  from "views" %}admin.admin.js.up.text{% endtrans %}</a>');
                             var $downFormB = $('<a href="#" class="down buttonS bBlue mt10" style="margin-left:7px;" title="{% trans  from "views" %}admin.admin.js.down.text{% endtrans %}">{% trans  from "views" %}admin.admin.js.down.text{% endtrans %}</a>');
                             
-                            if(($tagFormDiv.find("a.up").length + $tagFormDiv.find("a.down").length) == 0) {
+                            if(($tagFormDiv.children("a.up").length + $tagFormDiv.children("a.down").length) === 0) {
                                 $tagFormDiv.append($upFormB);
                                 $tagFormDiv.append($downFormB);
                                 $upFormB.on('click', function(e) {
@@ -297,13 +300,12 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                             var newWidget = {{ id }}List.attr('data-prototype');
                             var exp = new RegExp(/__n[a]{1}me__(([\[\]_a-zA-Z0-9]+__n[a]{1}me__){0,})/g);
                             newWidget = newWidget.replace(exp, {{ id }}IndexIntegrity+"$1");
-                            console.log(newWidget);
                             {{ id }}Count++; {{ id }}IndexIntegrity++;
                             var newDiv = jQuery('<div class="formRow noBorderB"></div>');
                             newDiv[0].innerHTML = newWidget;
                             add_{{ id }}FormDeleteLink(newDiv);
                             {% if 'sort' == attrname_split|last %}
-                                add_{{ id }}FormSortableLink(newDiv);
+                            add_{{ id }}FormSortableLink(newDiv);
                             {% endif %}
                             newDiv.appendTo({{ id }}List);
                             {{ id }}Integrity();
