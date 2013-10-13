@@ -1,3 +1,7 @@
+{% if form is defined %}
+{% form_theme form 'BlackAdminBundle:AdminForm:fields.html.twig' %}
+{% endif %}
+
 {% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
 {% set user = app.security.token.user %}
 {% set name = user.username is defined ? user.username : '' %}

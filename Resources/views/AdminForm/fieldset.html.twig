@@ -10,5 +10,17 @@
     </div>
 </fieldset>
 
+<fieldset class="grid3">
+    <div class="widget fixed">
+        <div class="whead"><h6>{% trans from "view" %}black.adminForm.fieldset.actions.header{% endtrans %}</h6>
+            <div class="clear"></div>
+        </div>
+        <div class="body">
+            {{ form_rest(form) }}
+        </div>
+        <div class="clear"></div>
+    </div>
+</fieldset>
+
 {{ elfinder_tinymce_init4() }}
 {{ tinymce_init() }}
