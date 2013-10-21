@@ -15,7 +15,9 @@
     "require": {
         "php": ">=5.4.0",
         "symfony/framework-bundle": "~2.3",
-        "symfony/form": "~2.3"
+        "symfony/form": "~2.3",
+        "stfalcon/tinymce-bundle": "dev-master",
+        "helios-ag/fm-elfinder-bundle": "dev-master"
     },
     "autoload": {
         "psr-0": { "Black\\Bundle\\AdminBundle": "" }

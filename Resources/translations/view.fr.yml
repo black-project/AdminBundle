@@ -1,0 +1,6 @@
+black:
+    adminForm:
+
+        fieldset:
+            actions:
+                header: Actions
