@@ -4,11 +4,20 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
 #}
 {% block form_row %}
 <div class="formRow">
+    {% if 'checkbox' in form.vars.block_prefixes %}
+
+    <div class="grid2">{{ form_widget(form) }}</div>
+    <div class="grid10">
+        {{ form_label(form) }}
+        {{ form_errors(form) }}
+    </div>
+    {% else %}
     <div class="grid2">{{ form_label(form) }}</div>
     <div class="grid10">
         {{ form_widget(form) }}
         {{ form_errors(form) }}
     </div>
+    {% endif %}
     <div class="clear"></div>
 </div>
 {% endblock %}

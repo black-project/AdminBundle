@@ -8,79 +8,89 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
     <title>{% block title %}{% trans from "views" %}admin.admin.base.title.text{% endtrans %}{% endblock %}</title>
-    {% stylesheets '@BlackAdminBundle/Resources/public/css/styles.css' %}
+
+    {#  Import CSS  #}
+    {% stylesheets 'bundles/blackadmin/css/styles.css' filter="cssrewrite" %}
     <link href="{{ asset_url }}" rel="stylesheet" media="screen, projection" />
     {% endstylesheets %}
 
+    {% stylesheets 'bundles/blackadmin/css/ie.css' filter="cssrewrite" %}
+    <!--[if IE]> <link href="{{ asset_url }}" rel="stylesheet" media="screen, projection" /> <![endif]-->
+    {% endstylesheets %}
+
     {% block stylesheets %}{% endblock %}
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
 </head>
 
 <body class="container">
 {% block body %}
 {% endblock body %}
 
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/forms/ui.spinner.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/forms/jquery.mousewheel.js"></script>
+
+<script type="text/javascript" src="js/plugins/forms/ui.spinner.js"></script>
+<script type="text/javascript" src="js/plugins/forms/jquery.mousewheel.js"></script>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/charts/excanvas.min.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/charts/jquery.flot.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/charts/jquery.flot.orderBars.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/charts/jquery.flot.pie.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/charts/jquery.flot.resize.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/charts/jquery.sparkline.min.js"></script>
-
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/tables/jquery.dataTables.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/tables/jquery.sortable.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/tables/jquery.resizable.js"></script>
-
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/forms/autogrowtextarea.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/forms/jquery.uniform.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/forms/jquery.inputlimiter.min.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/forms/jquery.tagsinput.min.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/forms/jquery.maskedinput.min.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/forms/jquery.autotab.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/forms/jquery.chosen.min.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/forms/jquery.dualListBox.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/forms/jquery.cleditor.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/forms/jquery.ibutton.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/forms/jquery.validationEngine-en.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/forms/jquery.validationEngine.js"></script>
-
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/uploader/plupload.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/uploader/plupload.html4.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/uploader/plupload.html5.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/uploader/jquery.plupload.queue.js"></script>
-
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/wizards/jquery.form.wizard.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/wizards/jquery.validate.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/wizards/jquery.form.js"></script>
-
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/ui/jquery.collapsible.min.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/ui/jquery.breadcrumbs.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/ui/jquery.tipsy.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/ui/jquery.progress.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/ui/jquery.timeentry.min.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/ui/jquery.colorpicker.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/ui/jquery.jgrowl.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/ui/jquery.fancybox.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/ui/jquery.fileTree.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/ui/jquery.sourcerer.js"></script>
-
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/others/jquery.fullcalendar.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/others/jquery.elfinder.js"></script>
-
-<script type="text/javascript" src="/bundles/blackadmin/js/plugins/ui/jquery.easytabs.min.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/jquery.slugify.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/files/bootstrap.js"></script>
-<script type="text/javascript" src="/bundles/blackadmin/js/files/functions.js"></script>
+{% javascripts
+    '@BlackAdminBundle/Resources/public/js/plugins/forms/ui.spinner.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.mousewheel.js'
+    '//ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/charts/excanvas.min.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/charts/jquery.flot.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/charts/jquery.flot.orderBars.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/charts/jquery.flot.pie.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/charts/jquery.flot.resize.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/charts/jquery.sparkline.min.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/tables/jquery.dataTables.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/tables/jquery.sortable.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/tables/jquery.resizable.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/forms/autogrowtextarea.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.uniform.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.inputlimiter.min.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.tagsinput.min.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.maskedinput.min.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.autotab.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.chosen.min.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.dualListBox.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.cleditor.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.ibutton.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.validationEngine-en.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.validationEngine.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/uploader/plupload.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/uploader/plupload.html4.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/uploader/plupload.html5.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/uploader/jquery.plupload.queue.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/wizards/jquery.form.wizard.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/wizards/jquery.validate.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/wizards/jquery.form.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.collapsible.min.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.breadcrumbs.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.tipsy.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.progress.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.timeentry.min.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.colorpicker.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.jgrowl.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.fancybox.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.fileTree.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.sourcerer.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/others/jquery.fullcalendar.js'
+    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.easytabs.min.js'
+    '@BlackAdminBundle/Resources/public/js/files/bootstrap.js'
+    '@BlackAdminBundle/Resources/public/js/files/functions.js'
+    '@BlackAdminBundle/Resources/public/js/charts/hBar_side.js'
+%}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
 
 {% block javascripts %}{% endblock %}
 </body>
