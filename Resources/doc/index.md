@@ -40,7 +40,7 @@ Add BlackAdminBundle in your composer.json:
 ```js
 {
     "require": {
-        "black/admin-bundle": "@dev"
+        "black/admin-bundle": "0.1.*"
     }
 }
 ```
@@ -174,8 +174,9 @@ fm_elfinder:
 ```
 
 ### Step 3: Buy the officiel theme
+
 Just go to ThemeForest and buy [Aquincum](http://themeforest.net/item/aquincum-premium-responsive-admin-template/2543882) for $21.
-Then download the archive and copy `HTML/css`, `HTML/images`, `HTML/js` to .
+Then download the archive and copy `HTML/css`, `HTML/images`, `HTML/js` to `web/admin`.
 
 
 ### Step 4: Champagne!
