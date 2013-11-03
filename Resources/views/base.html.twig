@@ -16,11 +16,11 @@
     <title>{% block title %}{% trans from "views" %}admin.admin.base.title.text{% endtrans %}{% endblock %}</title>
 
     {#  Import CSS  #}
-    {% stylesheets 'bundles/blackadmin/css/styles.css' filter="cssrewrite" %}
+    {% stylesheets 'admin/css/styles.css' filter="cssrewrite" %}
     <link href="{{ asset_url }}" rel="stylesheet" media="screen, projection" />
     {% endstylesheets %}
 
-    {% stylesheets 'bundles/blackadmin/css/ie.css' filter="cssrewrite" %}
+    {% stylesheets 'admin/css/ie.css' filter="cssrewrite" %}
     <!--[if IE]> <link href="{{ asset_url }}" rel="stylesheet" media="screen, projection" /> <![endif]-->
     {% endstylesheets %}
 
@@ -35,59 +35,50 @@
 {% block body %}
 {% endblock body %}
 
-
-<script type="text/javascript" src="js/plugins/forms/ui.spinner.js"></script>
-<script type="text/javascript" src="js/plugins/forms/jquery.mousewheel.js"></script>
-
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-
 {% javascripts
-    '@BlackAdminBundle/Resources/public/js/plugins/forms/ui.spinner.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.mousewheel.js'
+    'admin/js/plugins/forms/jquery.mousewheel.js'
     '//ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/charts/excanvas.min.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/charts/jquery.flot.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/charts/jquery.flot.orderBars.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/charts/jquery.flot.pie.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/charts/jquery.flot.resize.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/charts/jquery.sparkline.min.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/tables/jquery.dataTables.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/tables/jquery.sortable.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/tables/jquery.resizable.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/forms/autogrowtextarea.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.uniform.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.inputlimiter.min.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.tagsinput.min.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.maskedinput.min.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.autotab.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.chosen.min.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.dualListBox.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.cleditor.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.ibutton.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.validationEngine-en.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/forms/jquery.validationEngine.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/uploader/plupload.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/uploader/plupload.html4.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/uploader/plupload.html5.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/uploader/jquery.plupload.queue.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/wizards/jquery.form.wizard.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/wizards/jquery.validate.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/wizards/jquery.form.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.collapsible.min.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.breadcrumbs.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.tipsy.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.progress.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.timeentry.min.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.colorpicker.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.jgrowl.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.fancybox.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.fileTree.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.sourcerer.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/others/jquery.fullcalendar.js'
-    '@BlackAdminBundle/Resources/public/js/plugins/ui/jquery.easytabs.min.js'
-    '@BlackAdminBundle/Resources/public/js/files/bootstrap.js'
-    '@BlackAdminBundle/Resources/public/js/files/functions.js'
-    '@BlackAdminBundle/Resources/public/js/charts/hBar_side.js'
+    'admin/js/plugins/charts/excanvas.min.js'
+    'admin/js/plugins/charts/jquery.flot.js'
+    'admin/js/plugins/charts/jquery.flot.orderBars.js'
+    'admin/js/plugins/charts/jquery.flot.pie.js'
+    'admin/js/plugins/charts/jquery.flot.resize.js'
+    'admin/js/plugins/charts/jquery.sparkline.min.js'
+    'admin/js/plugins/tables/jquery.dataTables.js'
+    'admin/js/plugins/tables/jquery.sortable.js'
+    'admin/js/plugins/tables/jquery.resizable.js'
+    'admin/js/plugins/forms/jquery.uniform.js'
+    'admin/js/plugins/forms/jquery.inputlimiter.min.js'
+    'admin/js/plugins/forms/jquery.tagsinput.min.js'
+    'admin/js/plugins/forms/jquery.maskedinput.min.js'
+    'admin/js/plugins/forms/jquery.autotab.js'
+    'admin/js/plugins/forms/jquery.dualListBox.js'
+    'admin/js/plugins/forms/jquery.cleditor.js'
+    'admin/js/plugins/forms/jquery.ibutton.js'
+    'admin/js/plugins/forms/jquery.validationEngine-en.js'
+    'admin/js/plugins/forms/jquery.validationEngine.js'
+    'admin/js/plugins/uploader/plupload.js'
+    'admin/js/plugins/uploader/plupload.html4.js'
+    'admin/js/plugins/uploader/plupload.html5.js'
+    'admin/js/plugins/uploader/jquery.plupload.queue.js'
+    'admin/js/plugins/wizards/jquery.form.wizard.js'
+    'admin/js/plugins/wizards/jquery.validate.js'
+    'admin/js/plugins/wizards/jquery.form.js'
+    'admin/js/plugins/ui/jquery.collapsible.min.js'
+    'admin/js/plugins/ui/jquery.breadcrumbs.js'
+    'admin/js/plugins/ui/jquery.tipsy.js'
+    'admin/js/plugins/ui/jquery.progress.js'
+    'admin/js/plugins/ui/jquery.timeentry.min.js'
+    'admin/js/plugins/ui/jquery.colorpicker.js'
+    'admin/js/plugins/ui/jquery.jgrowl.js'
+    'admin/js/plugins/ui/jquery.fancybox.js'
+    'admin/js/plugins/ui/jquery.fileTree.js'
+    'admin/js/plugins/ui/jquery.sourcerer.js'
+    'admin/js/plugins/others/jquery.fullcalendar.js'
+    'admin/js/plugins/ui/jquery.easytabs.min.js'
+    'admin/js/files/bootstrap.js'
+    'admin/js/files/functions.js'
+    'admin/js/charts/hBar_side.js'
 %}
 <script src="{{ asset_url }}"></script>
 {% endjavascripts %}
