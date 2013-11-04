@@ -4,12 +4,12 @@
             <a title="" class="leftUserDrop">
                 {% if app.security.getToken().getUser().getPerson() is defined %}
                 {% if app.security.getToken().getUser().getPerson().getImage() is defined %}
-                <img src="/bundles/blackadmin/images/user.png" alt="" />
+                <img src="/admin/images/user.png" alt="" />
                 {% else %}
-                <img src="/bundles/blackadmin/images/userLogin2.png" alt="" width="72" height="70" />
+                <img src="/admin/images/userLogin2.png" alt="" width="72" height="70" />
                 {% endif %}
                 {% else %}
-                <img src="/bundles/blackadmin/images/userLogin2.png" alt="" width="72" height="70" />
+                <img src="/admin/images/userLogin2.png" alt="" width="72" height="70" />
                 {% endif %}
             </a>
             <span>{{ app.user.username }}</span>

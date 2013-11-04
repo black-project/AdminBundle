@@ -1,12 +1,15 @@
 {% form_theme form 'BlackAdminBundle:AdminForm:fields.html.twig' %}
 {% set title = title is defined ? title : "admin.admin.fieldset.title.default" %}
 
-<fieldset>
+<fieldset class="grid9">
     <div class="widget">
         <div class="whead"><h6>{{ title|trans({}, "views") }}</h6><div class="clear"></div></div>
         {% for input in form %}
-            {{ form_rest(form) }}
+            {% if input.vars.name not in {'save': 'save', 'saveAndAdd': 'saveAndAdd', 'reset': 'reset', 'delete': 'delete' } %}
+                {{ form_row(input) }}
+            {% endif %}
         {% endfor %}
+
     </div>
 </fieldset>
 
