@@ -1,32 +1,39 @@
 {% extends "BlackAdminBundle::base.html.twig" %}
 
 {% block body %}
-{% include 'BlackAdminBundle:Admin:header.html.twig' %}
+    {% include 'BlackAdminBundle:Admin:header.html.twig' %}
 
-<div class="loginWrapper">
+    <div class="loginWrapper">
 
-    <form id="login" action="{{ path("admin_login_check") }}" method="post">
-        <div class="loginPic">
-            <a href="#" title=""><img src="/admin/images/userLogin2.png" alt="" /></a>
-        </div>
-
-        {% if error %}
-        <div class="nNote nFailure">{{ error.message|trans }}</div>
-        {% endif %}
-
-        <input type="text" name="_username" value="{{ last_username }}" placeholder="{% trans from "form" %}admin.admin.login.username.placeholder{% endtrans %}" class="loginUsername" />
-        <input type="password" name="_password" placeholder="{% trans from "form" %}admin.admin.login.password.placeholder{% endtrans %}" class="loginPassword" />
-
-        <div class="logControl">
-            <div class="memory">
-                <input type="checkbox" class="check" id="remember" name="_remember_me" />
-                <label for="remember">{% trans from "form" %}admin.admin.login.remember.label.text{% endtrans %}</label>
+        <form id="login" action="{{ path("admin_login_check") }}" method="post">
+            <div class="loginPic">
+                <a href="#" title=""><img src="/admin/images/userLogin2.png" alt=""/></a>
             </div>
-            <input type="submit" name="_submit" value="{% trans from "form" %}admin.admin.login.submit.value{% endtrans %}" class="buttonM bBlue" />
-        </div>
-    </form>
 
-</div>
-{#  Login wrapper ends  #}
+            {% if error %}
+                <div class="nNote nFailure">{{ error.message|trans }}</div>
+            {% endif %}
+
+            <input type="text" name="_username" value="{{ last_username }}"
+                   placeholder="{% trans from "form" %}black.bundle.admin.adminSecurity.login.username.placeholder{% endtrans %}"
+                   class="loginUsername"/>
+            <input type="password" name="_password"
+                   placeholder="{% trans from "form" %}black.bundle.admin.adminSecurity.login.password.placeholder{% endtrans %}"
+                   class="loginPassword"/>
+
+            <div class="logControl">
+                <div class="memory">
+                    <input type="checkbox" class="check" id="remember" name="_remember_me"/>
+                    <label for="remember">{% trans from "form" %}
+                        black.bundle.admin.adminSecurity.login.remember.label.text{% endtrans %}</label>
+                </div>
+                <input type="submit" name="_submit"
+                       value="{% trans from "form" %}black.bundle.admin.adminSecurity.login.submit.value{% endtrans %}"
+                       class="buttonM bBlue"/>
+            </div>
+        </form>
+
+    </div>
+    {#  Login wrapper ends  #}
 
 {% endblock body %}

@@ -2,19 +2,31 @@
 
 <div class="grid3">
     <div class="widget fixed">
-        <div class="whead"><h6>{% trans from "views" %}admin.admin.actions.actions.text{% endtrans %}</h6><div class="clear"></div></div>
+        <div class="whead"><h6>{% trans from "views" %}black.bundle.adminForm.actions.actions.text{% endtrans %}</h6>
+
+            <div class="clear"></div>
+        </div>
         <div class="body">
-            <input type="submit" value="{% if action == "edit" %}{% trans from "views" %}admin.admin.actions.action.edit.text{% endtrans %}{% else %}{% trans from "views" %}admin.admin.actions.action.create.text{% endtrans %}{% endif %}" form="validate" class="buttonM bGreen floatL" />
+            <input type="submit"
+                   value="{% if action == "edit" %}{% trans from "views" %}black.bundle.adminForm.actions.action.edit.text{% endtrans %}
+            {% else %}
+            {% trans from "views" %}black.bundle.adminForm.actions.action.create.text{% endtrans %}
+            {% endif %}" form="validate" class="buttonM bGreen floatL"/>
 
             {% if action == 'edit' %}
-            <form action="{{ path(admin_delete, { 'id': document.id }) }}" method="post">
-                {{ form_widget(delete_form) }}
-                <button type="submit" class="buttonM bRed floatR">{% trans from "views" %}admin.admin.actions.action.delete.text{% endtrans %}</button><div class="clear"></div>
-            </form>
+                <form action="{{ path(admin_delete, { 'id': document.id }) }}" method="post">
+                    {{ form_widget(delete_form) }}
+                    <button type="submit" class="buttonM bRed floatR">{% trans from "views" %}
+                        black.bundle.adminForm.actions.action.delete.text{% endtrans %}</button>
+                    <div class="clear"></div>
+                </form>
             {% endif %}
 
             {% if action == 'new' %}
-            <a class="buttonM bBlue floatR" href="{{ path(admin_index) }}" title="{% trans from "views" %}admin.admin.actions.action.back.text{% endtrans %}">{% trans from "views" %}admin.admin.actions.action.back.text{% endtrans %}</a><div class="clear"></div>
+                <a class="buttonM bBlue floatR" href="{{ path(admin_index) }}"
+                   title="{% trans from "views" %}black.bundle.adminForm.actions.action.back.text{% endtrans %}">
+                    {% trans from "views" %}black.bundle.adminForm.actions.action.back.text{% endtrans %}</a>
+                <div class="clear"></div>
             {% endif %}
         </div>
     </div>
