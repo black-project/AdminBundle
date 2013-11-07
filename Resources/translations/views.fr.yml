@@ -20,6 +20,12 @@ black:
                             title: Tableau de bord
                             text: Tableau de bord
                 mainNav:
+                    dashboard:
+                        a:
+                            text: Tableau de bord
+                            title: Tableau de bord
+                        img:
+                            alt: Tableau de bord
                 searchJson:
                 secondaryNav:
                     dashboard:
@@ -63,12 +69,23 @@ black:
                     add:
                         text: Ajouter
                         title: Ajouter
+                    double_box:
+                        placeholder: Rechercher ...
                 fieldset:
                     title:
                         default: Créer une nouvelle chose
                     actions:
                         header: AAA
             adminSecurity:
-
+                login:
+                    username:
+                        placeholder: Nom d'utilisateur
+                    password:
+                        placeholder: Mot de passe
+                    remember:
+                        label:
+                            text: Se souvenir de moi
+                    submit:
+                        value: Connexion
             adminTable:
             

@@ -15,20 +15,20 @@
             {% endif %}
 
             <input type="text" name="_username" value="{{ last_username }}"
-                   placeholder="{% trans from "form" %}black.bundle.admin.adminSecurity.login.username.placeholder{% endtrans %}"
+                   placeholder="{% trans from "views" %}black.bundle.admin.adminSecurity.login.username.placeholder{% endtrans %}"
                    class="loginUsername"/>
             <input type="password" name="_password"
-                   placeholder="{% trans from "form" %}black.bundle.admin.adminSecurity.login.password.placeholder{% endtrans %}"
+                   placeholder="{% trans from "views" %}black.bundle.admin.adminSecurity.login.password.placeholder{% endtrans %}"
                    class="loginPassword"/>
 
             <div class="logControl">
                 <div class="memory">
                     <input type="checkbox" class="check" id="remember" name="_remember_me"/>
-                    <label for="remember">{% trans from "form" %}
+                    <label for="remember">{% trans from "views" %}
                         black.bundle.admin.adminSecurity.login.remember.label.text{% endtrans %}</label>
                 </div>
                 <input type="submit" name="_submit"
-                       value="{% trans from "form" %}black.bundle.admin.adminSecurity.login.submit.value{% endtrans %}"
+                       value="{% trans from "views" %}black.bundle.admin.adminSecurity.login.submit.value{% endtrans %}"
                        class="buttonM bBlue"/>
             </div>
         </form>
