@@ -1,104 +1,113 @@
-admin:
-  admin:
-    actions:
-      actions:
-        text: Actions
-      action:
-        back:
-          text: Retour
-        create:
-          text: Créer
-        delete:
-          text: Supprimer
-        edit:
-          text: Éditer
-          
-    base:
-      title:
-        text: Bienvenue Administrateur!
-          
-    breadLine:
-      dashboard:
-        a:
-          text: Tableau de bord
-          title: Tableau de bord
-      shortcut:
-        text: Raccourci
-          
-    contentTop:
-      manage:
-        text: Gérer
-        
-    fields:
-      add:
-        text: Ajouter
-        title: Ajouter
-        
-    fieldset:
-      title:
-        default: Créer une nouvelle chose
-    
-    header:
-      dashboard:
-        a:
-          text: Tableau de bord
-          title: Tableau de bord
-          
-    index:
-      hello:
-        text: Bonjour %username% !
-      statistics:
-        text: Statistiques
-        person:
-          text: "{0} Il faut créer des personnes maintenant ! |{1} personne dans votre base de données | ]1,Inf] personnes dans votre base de données"
-      widget:
-        person:
-          text: Les derniers clients
+black:
+    bundle:
+        admin:
+            base:
+                title:
+                    text: Bienvenue Administrateur!
+            admin:
+                breadLine:
+                    dashboard:
+                        a:
+                            title: Tableau de bord
+                            text: Tableau de bord
+                    shortcut:
+                        text: Raccourci
+                contentTop:
+                    manage:
+                        text: Gérer
+                flashes:
+                header:
+                    dashboard:
+                        a:
+                            title: Tableau de bord
+                            text: Tableau de bord
+                mainNav:
+                    dashboard:
+                        a:
+                            text: Tableau de bord
+                            title: Tableau de bord
+                        img:
+                            alt: Tableau de bord
+                searchJson:
+                secondaryNav:
+                    dashboard:
+                        text: Tableau de bord
+                        a:
+                            title: Tableau de bord
+                            text: Tableau de bord
+                    person:
+                        create:
+                            a:
+                                text: à compléter
+                sidebar:
+                    logout:
+                        a:
+                            text: Se déconnecter
+                            title: Se déconnecter
+                    mainNav:
+                        dashboard:
+                            a:
+                                text: Tableau de bord
+                                title: Tableau de bord
+                            img:
+                                alt: Tableau de bord
+            adminForm:
+                actions:
+                    actions:
+                        text: Actions
+                    action:
+                        back:
+                            text: Retour
+                        create:
+                            text: Créer
+                        delete:
+                            text: Supprimer
+                        edit:
+                            text: Éditer
+                    add:
+                        title:
+                errors:
+                fields:
+                    add:
+                        text: Ajouter
+                        title: Ajouter
+                    double_box:
+                        placeholder: Rechercher ...
+                fieldset:
+                    title:
+                        default: Créer une nouvelle chose
+                    actions:
+                        header: Actions
+            adminSecurity:
+                login:
+                    username:
+                        placeholder: Nom d'utilisateur
+                    password:
+                        placeholder: Mot de passe
+                    remember:
+                        label:
+                            text: Se souvenir de moi
+                    submit:
+                        value: Connexion
+            adminTable:
+                tfoot:
+                    action:
+                        label:
+                            text: Exécuter une action
+                        select:
+                            default: Choisir une action
+                            delete: Supprimer
+                        submit:
+                            value: Envoyer
+                table:
+                    options:
+                        text: Options
+                        a:
+                            title: Options
+                        img:
+                            alt: Options
+                    record:
+                        empty:
+                            text: Il n'y a pas d'enregistrements!
+
             
-    mainNav:
-      dashboard:
-        a:
-          text: Tableau de bord
-          title: Tableau de bord
-        img:
-          alt: Tableau de bord
-    
-    row:
-      show:
-        title: Voir
-      edit:
-        title: Editer
-      delete:
-        title: Supprimer
-    
-    js:
-      down:
-        text: Descendre
-      up:
-        text: Monter
-      remove:
-        text: Enlever
-    
-    secondaryNav:
-      dashboard:
-        text: Tableau de bord
-        a:
-          text: Tableau de bord
-          title: Tableau de bord
-            
-    sidebar:
-      logout:
-        a:
-          text: Se déconnecter
-          title: Se déconnecter
-          
-    table:
-      options:
-        text: Options
-        a:
-          title: Options
-        img:
-          alt: Options
-      record:
-        empty:
-          text: Il n'y a pas d'enregistrements!

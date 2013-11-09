@@ -14,7 +14,7 @@
             </a>
             <span>{{ app.user.username }}</span>
             <ul class="leftUser">
-                <li><a href="{{ url('admin_logout') }}" title="{% trans from "views" %}admin.admin.sidebar.logout.a.title{% endtrans %}" class="sLogout">{% trans from "views" %}admin.admin.sidebar.logout.a.text{% endtrans %}</a></li>
+                <li><a href="{{ url('admin_logout') }}" title="{% trans from "views" %}black.bundle.admin.admin.sidebar.logout.a.title{% endtrans %}" class="sLogout">{% trans from "views" %}black.bundle.admin.admin.sidebar.logout.a.text{% endtrans %}</a></li>
             </ul>
         </div>
 
@@ -29,7 +29,7 @@
 
             {#  User nav  #}
             <ul class="userNav">
-                <li><a href="{{ url('admin_logout') }}" title="{% trans from "views" %}admin.admin.sidebar.logout.a.title{% endtrans %}" class="logout">{% trans from "views" %}admin.admin.sidebar.logout.a.text{% endtrans %}</a>
+                <li><a href="{{ url('admin_logout') }}" title="{% trans from "views" %}black.bundle.admin.admin.sidebar.logout.a.title{% endtrans %}" class="logout">{% trans from "views" %}black.bundle.admin.admin.sidebar.logout.a.text{% endtrans %}</a>
             </ul>
         </div>
 
@@ -37,9 +37,9 @@
         <ul class="nav">
             {% include 'BlackAdminBundle:Admin:mainNav.html.twig' with {
                 'a_route': 'admin_index',
-                'a_text': 'admin.admin.mainNav.dashboard.a.text',
-                'a_title': 'admin.admin.mainNav.dashboard.a.title',
-                'img_alt': 'admin.admin.mainNav.dashboard.img.alt',
+                'a_text': 'black.bundle.admin.admin.sidebar.mainNav.dashboard.a.text',
+                'a_title': 'black.bundle.admin.admin.sidebar.mainNav.dashboard.a.title',
+                'img_alt': 'black.bundle.admin.admin.sidebar.mainNav.dashboard.img.alt',
                 'img_path': 'dashboard.png'
             } only %}
         </ul>
