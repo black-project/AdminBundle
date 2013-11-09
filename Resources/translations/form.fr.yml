@@ -1,0 +1,20 @@
+black:
+    bundle:
+        admin:
+            eventListener:
+                setButtonsSubscriber:
+                    button:
+                        save:
+                            label: sauver
+                        saveAndAdd:
+                            label: sauver et ajouter
+                        reset:
+                            label: annuler
+            type:
+                customDoubleBox:
+                doubleBox:
+            controller:
+                adminPage:
+                    index:
+                        text: Nom des pages
+
