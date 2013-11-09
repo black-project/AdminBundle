@@ -1,43 +1,20 @@
 black:
-    admin:
-        subscriber:
-            button:
-                save:
-                    label: Enregistrer
-                saveAndAdd:
-                    label: Enregistrer et créer
-                reset:
-                    label: Annuler les modifications
-                delete:
-                    label: Supprimer
+    bundle:
+        admin:
+            eventListener:
+                setButtonsSubscriber:
+                    button:
+                        save:
+                            label: sauver
+                        saveAndAdd:
+                            label: sauver et ajouter
+                        reset:
+                            label: annuler
+            type:
+                customDoubleBox:
+                doubleBox:
+            controller:
+                adminPage:
+                    index:
+                        text: Nom des pages
 
-admin:
-  admin:
-    double_box:
-      input:
-        placeholder: Rechercher ...
-        
-    dashboard:
-      srch:
-        placeholder: Rechercher une personne
-        
-    login:
-      password:
-        placeholder: Mot de passe
-      remember:
-        label:
-          text: Se souvenir de moi
-      username:
-        placeholder: Nom d'utilisateur
-      submit:
-        value: Connexion
-      
-    tfoot:
-      action:
-        label:
-          text: Exécuter une action
-        select:
-          default: Choisir une action
-          delete: Supprimer
-        submit:
-          value: Envoyer

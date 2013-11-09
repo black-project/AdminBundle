@@ -54,21 +54,21 @@ class SetButtonsSubscriber implements EventSubscriberInterface
     {
         $form
             ->add('save', 'submit', array(
-                    'label'     => 'black.admin.subscriber.button.save.label',
+                    'label'     => 'black.bundle.admin.eventListener.setButtonsSubscriber.button.save.label',
                     'attr'      => array(
                         'class'     => 'buttonL bBlue floatL mb10 mr10'
                     )
                 )
             )
             ->add('saveAndAdd', 'submit', array(
-                    'label'     => 'black.admin.subscriber.button.saveAndAdd.label',
+                    'label'     => 'black.bundle.admin.eventListener.setButtonsSubscriber.button.saveAndAdd.label',
                     'attr'      => array(
                         'class'     => 'buttonL bLightBlue floatL mb10 mr10'
                     )
                 )
             )
             ->add('reset', 'reset', array(
-                    'label'     => 'black.admin.subscriber.button.reset.label',
+                    'label'     => 'black.bundle.admin.eventListener.setButtonsSubscriber.button.reset.label',
                     'attr'      => array(
                         'class'     => 'buttonL bDefault floatL mb10 mr10'
                     )
