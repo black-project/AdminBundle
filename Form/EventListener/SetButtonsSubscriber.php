@@ -54,23 +54,27 @@ class SetButtonsSubscriber implements EventSubscriberInterface
     {
         $form
             ->add('save', 'submit', array(
-                    'label'     => 'black.admin.subscriber.button.save.label',
+                    'label'     => 'black.bundle.admin.eventListener.setButtonsSubscriber.button.save.label',
                     'attr'      => array(
-                        'class'     => 'buttonL bBlue floatL mb10 mr10'
+                        'class'     => 'buttonL bBlue floatL mb10 mr10',
+                        'title'     => 'black.bundle.admin.eventListener.setButtonsSubscriber.button.save.title'
+
                     )
                 )
             )
             ->add('saveAndAdd', 'submit', array(
-                    'label'     => 'black.admin.subscriber.button.saveAndAdd.label',
+                    'label'     => 'black.bundle.admin.eventListener.setButtonsSubscriber.button.saveAndAdd.label',
                     'attr'      => array(
-                        'class'     => 'buttonL bLightBlue floatL mb10 mr10'
+                        'class'     => 'buttonL bLightBlue floatL mb10 mr10',
+                        'title'     =>'black.bundle.admin.eventListener.setButtonsSubscriber.button.saveAndAdd.title'
                     )
                 )
             )
             ->add('reset', 'reset', array(
-                    'label'     => 'black.admin.subscriber.button.reset.label',
+                    'label'     => 'black.bundle.admin.eventListener.setButtonsSubscriber.button.reset.label',
                     'attr'      => array(
-                        'class'     => 'buttonL bDefault floatL mb10 mr10'
+                        'class'     => 'buttonL bDefault floatL mb10 mr10',
+                        'title'     =>'black.bundle.admin.eventListener.setButtonsSubscriber.button.saveAndAdd.title'
                     )
                 )
             )
@@ -84,7 +88,7 @@ class SetButtonsSubscriber implements EventSubscriberInterface
     {
         $form
             ->add('delete', 'submit', array(
-                    'label'             => 'black.admin.subscriber.button.delete.label',
+                    'label'             => 'black.bundle.admin.eventListener.setButtonsSubscriber.button.delete.label',
                     'validation_groups' => false,
                     'attr'              => array(
                         'class'             => 'buttonL bRed floatL mb10 mr10'
