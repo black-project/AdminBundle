@@ -10,7 +10,7 @@
                     {% endif %}
                 </select>
                 <input type="hidden" name="token" value="{{ csrf.generateCsrfToken('batch') }}" />
-                <input type="submit" class="buttonS bGreen" value="{% trans from "views" %}black.bundle.admin.adminTable.tfoot.action.submit.value{% endtrans %}" />
+                <input type="submit" class="buttonS bGreen" title="{% trans from "views" %}black.bundle.admin.adminTable.tfoot.action.submit.title{% endtrans %}" value="{% trans from "views" %}black.bundle.admin.adminTable.tfoot.action.submit.value{% endtrans %}" />
             </div>
         </td>
     </tr>

@@ -99,6 +99,7 @@ black:
                             delete: Supprimer
                         submit:
                             value: Envoyer
+                            title: Envoyer les données
                 table:
                     options:
                         text: Options

@@ -5,11 +5,17 @@ black:
                 setButtonsSubscriber:
                     button:
                         save:
-                            label: sauver
+                            label: Sauver
+                            title: Sauver les données
                         saveAndAdd:
-                            label: sauver et ajouter
+                            label: Sauver et ajouter
+                            title: Sauver et ajouter les données
                         reset:
-                            label: annuler
+                            label: Annuler
+                            title: Annuler les modifications
+                        delete:
+                            label: Effacer
+                            title: Effacer les modifications
             type:
                 customDoubleBox:
                 doubleBox:

@@ -1,8 +1,8 @@
 <div id="dyn" class="hiddenpars">
     {% if documents %}
         <a class="tOptions" title="{% trans from "views" %}black.bundle.adminTable.table.options.a.title{% endtrans %}"><img
-                    src="/admin/images/icons/options.png"
-                    alt="{% trans from "views" %}black.bundle.adminTable.table.options.img.alt{% endtrans %}"/></a>
+                    src="/admin/images/elements/other/tableArrows.png"
+                    alt="{% trans from "views" %}black.bundle.admin.adminTable.table.options.img.alt{% endtrans %}"/></a>
     {% endif %}
 
     <table cellpadding="0" cellspacing="0" width="100%"
@@ -21,7 +21,8 @@
                     {% endfor %}
                 {% endif %}
             {% endfor %}
-            <td style="width: 100px">{% trans from "views" %}black.bundle.admin.adminTable.table.options.text{% endtrans %}</td>
+            <td style="width: 100px">{% trans from "views" %}
+                black.bundle.admin.adminTable.table.options.text{% endtrans %}</td>
         </tr>
         </thead>
 
@@ -30,7 +31,8 @@
             {% include 'BlackAdminBundle:AdminTable:row.html.twig' with {'document': document} %}
         {% else %}
             <tr class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
-                <td colspan="3">{% trans from "views" %}black.bundle.admin.adminTable.table.record.empty.text{% endtrans %}</td>
+                <td colspan="3">{% trans from "views" %}
+                    black.bundle.admin.adminTable.table.record.empty.text{% endtrans %}</td>
             </tr>
         {% endfor %}
         </tbody>
@@ -38,3 +40,30 @@
         {% include 'BlackAdminBundle:AdminTable:tfoot.html.twig' %}
     </table>
 </div>
+<script>
+    $(document).ready(function () {
+
+        oTable = $('.dTable').dataTable({
+            "bJQueryUI": false,
+            "bAutoWidth": false,
+            "sPaginationType": "full_numbers",
+            "sDom": '<"tablePars"fl>t<"tableFooter"ip>',
+            "oLanguage": {
+                "sLengthMenu": "<span class='showentries'>Show entries:</span> _MENU_"
+            }
+        });
+
+        $('#dyn .tOptions').click(function () {
+            $('#dyn .tablePars').slideToggle(200);
+        });
+
+        $('#dyn2 .tOptions').click(function () {
+            $('#dyn2 .tablePars').slideToggle(200);
+        });
+
+
+        $('.tOptions').click(function () {
+            $(this).toggleClass("act");
+        });
+    });
+</script>
