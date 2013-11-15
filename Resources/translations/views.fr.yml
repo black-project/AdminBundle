@@ -78,6 +78,13 @@ black:
                         default: Créer une nouvelle chose
                     actions:
                         header: Actions
+                eventListener:
+                    setButtonsSubscriber:
+                        button:
+                            save:
+                                label: Sauver
+                            reset:
+                                label: Annuler
             adminSecurity:
                 login:
                     username:
@@ -110,5 +117,12 @@ black:
                     record:
                         empty:
                             text: Il n'y a pas d'enregistrements!
+                row:
+                    show:
+                        title: Voir
+                    edit:
+                        title: Editer
+                    delete:
+                        title: Supprimer
 
             

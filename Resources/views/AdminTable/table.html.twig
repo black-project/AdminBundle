@@ -1,7 +1,7 @@
 <div id="dyn" class="hiddenpars">
     {% if documents %}
-        <a class="tOptions" title="{% trans from "views" %}black.bundle.adminTable.table.options.a.title{% endtrans %}"><img
-                    src="/admin/images/elements/other/tableArrows.png"
+        <a class="tOptions" title="{% trans from "views" %}black.bundle.admin.adminTable.table.options.a.title{% endtrans %}"><img
+                    src="/admin/images/icons/options.png"
                     alt="{% trans from "views" %}black.bundle.admin.adminTable.table.options.img.alt{% endtrans %}"/></a>
     {% endif %}
 
@@ -44,6 +44,7 @@
     $(document).ready(function () {
 
         oTable = $('.dTable').dataTable({
+            "bProcessing": false,
             "bJQueryUI": false,
             "bAutoWidth": false,
             "sPaginationType": "full_numbers",
