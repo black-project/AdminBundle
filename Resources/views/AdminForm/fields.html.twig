@@ -3,105 +3,113 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
         Comme si on pouvait faire confiance aux devs pour sortir du HTML correct (HAHAHA -_-v)
 #}
 {% block form_row %}
-<div class="formRow">
-    {% if 'checkbox' in form.vars.block_prefixes %}
+    <div class="formRow">
+        {% if 'checkbox' in form.vars.block_prefixes %}
 
-    <div class="grid2">{{ form_widget(form) }}</div>
-    <div class="grid10">
-        {{ form_label(form) }}
-        {{ form_errors(form) }}
+            <div class="grid2">{{ form_widget(form) }}</div>
+            <div class="grid10">
+                {{ form_label(form) }}
+                {{ form_errors(form) }}
+            </div>
+        {% else %}
+            <div class="grid2">{{ form_label(form) }}</div>
+            <div class="grid10">
+                {{ form_widget(form) }}
+                {{ form_errors(form) }}
+            </div>
+        {% endif %}
+        <div class="clear"></div>
     </div>
-    {% else %}
-    <div class="grid2">{{ form_label(form) }}</div>
-    <div class="grid10">
-        {{ form_widget(form) }}
-        {{ form_errors(form) }}
-    </div>
-    {% endif %}
-    <div class="clear"></div>
-</div>
 {% endblock %}
 
 {% block tag_widget %}
 
     {% spaceless %}
-        <input type="text" id="{{ id }}" name="{{ full_name }}" class="tags" value="{{ value }}" />
+        <input type="text" id="{{ id }}" name="{{ full_name }}" class="tags" value="{{ value }}"/>
     {% endspaceless %}
 
 {% endblock %}
 
 {% block double_box_widget %}
-<script>
-        $(function() {
-        $.configureBoxes({
-            useFilters: true,
-            useCounters: true,
-            box1View: '{{ id }}1View',
-            box1Storage: '{{ id }}1Storage',
-            box1Filter: '{{ id }}1Filter',
-            box1Clear: '{{ id }}1Clear',
-            box1Counter: '{{ id }}1Counter',
-            box2View: '{{ id }}2View',
-            box2Storage: '{{ id }}2Storage',
-            box2Filter: '{{ id }}2Filter',
-            box2Clear: '{{ id }}2Clear',
-            box2Counter: '{{ id }}2Counter',
-            to1: 'to{{ id }}1',
-            to2: 'to{{ id }}2',
-            allTo1: 'allTo{{ id }}1',
-            allTo2: 'allTo{{ id }}2'
+    <script>
+        $(function () {
+            $.configureBoxes({
+                useFilters: true,
+                useCounters: true,
+                box1View: '{{ id }}1View',
+                box1Storage: '{{ id }}1Storage',
+                box1Filter: '{{ id }}1Filter',
+                box1Clear: '{{ id }}1Clear',
+                box1Counter: '{{ id }}1Counter',
+                box2View: '{{ id }}2View',
+                box2Storage: '{{ id }}2Storage',
+                box2Filter: '{{ id }}2Filter',
+                box2Clear: '{{ id }}2Clear',
+                box2Counter: '{{ id }}2Counter',
+                to1: 'to{{ id }}1',
+                to2: 'to{{ id }}2',
+                allTo1: 'allTo{{ id }}1',
+                allTo2: 'allTo{{ id }}2'
+            });
         });
-    });
-</script>
+    </script>
     {% spaceless %}
-<div class="leftBox">
-    <input type="text" id="{{ id }}1Filter" class="boxFilter" placeholder="{% trans from "form"%}admin.admin.double_box.input.placeholder{% endtrans %}" />
-        <button type="button" id="{{ id }}1Clear" class="dualBtn fltr">x</button><br />
+        <div class="leftBox">
+            <input type="text" id="{{ id }}1Filter" class="boxFilter"
+                   placeholder="{% trans from "views" %}black.bundle.admin.adminForm.fields.double_box.input.placeholder{% endtrans %}"/>
+            <button type="button" id="{{ id }}1Clear" class="dualBtn fltr">x</button>
+            <br/>
 
-    <select id="{{ id }}1View" multiple="multiple" class="multiple" style="height:300px;">
-        {% if empty_value is not none %}
-            <option value="">{{ empty_value|trans({}, "form") }}</option>
-        {% endif %}
-        {% if preferred_choices|length > 0 %}
-            {% set options = preferred_choices %}
+            <select id="{{ id }}1View" multiple="multiple" class="multiple" style="height:300px;">
+                {% if empty_value is not none %}
+                    <option value="">{{ empty_value|trans({}, "form") }}</option>
+                {% endif %}
+                {% if preferred_choices|length > 0 %}
+                    {% set options = preferred_choices %}
+                    {{ block('left_box_widget_options') }}
+                    {% if choices|length > 0 and separator is not none %}
+                        <option disabled="disabled">{{ separator }}</option>
+                    {% endif %}
+                {% endif %}
+                {% set options = choices %}
                 {{ block('left_box_widget_options') }}
-            {% if choices|length > 0 and separator is not none %}
-                <option disabled="disabled">{{ separator }}</option>
-            {% endif %}
-        {% endif %}
-        {% set options = choices %}
-        {{ block('left_box_widget_options') }}
-    </select>
-    <br/>
-    <span id="{{ id }}1Counter" class="countLabel"></span>
-    <div class="displayNone"><select id="{{ id }}1Storage"></select></div>
-</div>
-<div class="dualControl">
-    <button id="to{{ id }}2" type="button" class="dualBtn mr5 mb15">&nbsp;&gt;&nbsp;</button>
-    <button id="allTo{{ id }}2" type="button" class="dualBtn">&nbsp;&gt;&gt;&nbsp;</button><br />
-    <button id="to{{ id }}1" type="button" class="dualBtn mr5">&nbsp;&lt;&nbsp;</button>
-    <button id="allTo{{ id }}1" type="button" class="dualBtn">&nbsp;&lt;&lt;&nbsp;</button>
-</div>
-<div class="rightBox">
-    <input type="text" id="{{ id }}2Filter" class="boxFilter" placeholder="{% trans from "form"%}admin.admin.double_box.input.placeholder{% endtrans %}" />
-        <button type="button" id="{{ id }}2Clear" class="dualBtn fltr">x</button><br />
-    <select id="{{ id }}2View" name="{{ full_name }}" multiple="multiple" class="multiple" style="height:300px;">
-        {% if empty_value is not none %}
-            <option value="">{{ empty_value|trans({}, "form") }}</option>
-        {% endif %}
-        {% if preferred_choices|length > 0 %}
-            {% set options = preferred_choices %}
+            </select>
+            <br/>
+            <span id="{{ id }}1Counter" class="countLabel"></span>
+
+            <div class="displayNone"><select id="{{ id }}1Storage"></select></div>
+        </div>
+        <div class="dualControl">
+            <button id="to{{ id }}2" type="button" class="dualBtn mr5 mb15">&nbsp;&gt;&nbsp;</button>
+            <button id="allTo{{ id }}2" type="button" class="dualBtn">&nbsp;&gt;&gt;&nbsp;</button>
+            <br/>
+            <button id="to{{ id }}1" type="button" class="dualBtn mr5">&nbsp;&lt;&nbsp;</button>
+            <button id="allTo{{ id }}1" type="button" class="dualBtn">&nbsp;&lt;&lt;&nbsp;</button>
+        </div>
+        <div class="rightBox">
+            <input type="text" id="{{ id }}2Filter" class="boxFilter"
+                   placeholder="{% trans from "form" %}black.bundle.admin.adminForm.fields.double_box.input.placeholder{% endtrans %}"/>
+            <button type="button" id="{{ id }}2Clear" class="dualBtn fltr">x</button>
+            <br/>
+            <select id="{{ id }}2View" name="{{ full_name }}" multiple="multiple" class="multiple"
+                    style="height:300px;">
+                {% if empty_value is not none %}
+                    <option value="">{{ empty_value|trans({}, "form") }}</option>
+                {% endif %}
+                {% if preferred_choices|length > 0 %}
+                    {% set options = preferred_choices %}
+                    {{ block('right_box_widget_options') }}
+                    {% if choices|length > 0 and separator is not none %}
+                        <option disabled="disabled">{{ separator }}</option>
+                    {% endif %}
+                {% endif %}
+                {% set options = choices %}
                 {{ block('right_box_widget_options') }}
-            {% if choices|length > 0 and separator is not none %}
-                <option disabled="disabled">{{ separator }}</option>
-            {% endif %}
-        {% endif %}
-        {% set options = choices %}
-        {{ block('right_box_widget_options') }}
-    </select><br/>
-    <span id="{{ id }}2Counter" class="countLabel"></span>
-    <div class="displayNone"><select id="{{ id }}2Storage"></select></div>
-</div>
+            </select><br/>
+            <span id="{{ id }}2Counter" class="countLabel"></span>
+
+            <div class="displayNone"><select id="{{ id }}2Storage"></select></div>
+        </div>
     {% endspaceless %}
 {% endblock %}
 
@@ -114,7 +122,8 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                     {{ block('left_box_widget_options') }}
                 </optgroup>
             {% else %}
-                {% if choice is not selectedchoice(value) %}<option value="{{ choice.value }}" >{{ choice.label|trans({}, "form") }}</option>{% endif %}
+                {% if choice is not selectedchoice(value) %}
+                    <option value="{{ choice.value }}" >{{ choice.label|trans({}, "form") }}</option>{% endif %}
             {% endif %}
         {% endfor %}
     {% endspaceless %}
@@ -129,7 +138,8 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                     {{ block('right_box_widget_options') }}
                 </optgroup>
             {% else %}
-                {% if choice is selectedchoice(value) %}<option value="{{ choice.value }}" >{{ choice.label|trans({}, "form") }}</option>{% endif %}
+                {% if choice is selectedchoice(value) %}
+                    <option value="{{ choice.value }}" >{{ choice.label|trans({}, "form") }}</option>{% endif %}
             {% endif %}
         {% endfor %}
     {% endspaceless %}
@@ -173,26 +183,27 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
 
 {% block checkbox_widget %}
     {% spaceless %}
-        <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} class="check" />
+        <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %}
+               class="check"/>
     {% endspaceless %}
 {% endblock checkbox_widget %}
 
 {% block form_label %}
     {% spaceless %}
         {% if not compound %}
-        {% set label_attr = label_attr|merge({'for': id}) %}
+            {% set label_attr = label_attr|merge({'for': id}) %}
         {% endif %}
 
         {% if required %}
-        {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
         {% endif %}
 
         {% if label is empty %}
-        {% set label = name|humanize %}
+            {% set label = name|humanize %}
         {% endif %}
 
         <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
-            {{ label|trans({}, "form") }}{% if required %}<span class="req">*</span>{%endif %}
+        {{ label|trans({}, "form") }}{% if required %}<span class="req">*</span>{% endif %}
         </label>
     {% endspaceless %}
 {% endblock form_label %}
@@ -207,15 +218,13 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
     {% spaceless %}
         {% if errors|length > 0 %}
             <div class="nNote nFailure">
-            <ul>
-                {% for error in errors %}
-                    <li>{{
-                    error.messagePluralization is null
-                    ? error.messageTemplate|trans(error.messageParameters, 'validators')
-                    : error.messageTemplate|transchoice(error.messagePluralization, error.messageParameters, 'validators')
-                    }}</li>
-                {% endfor %}
-            </ul>
+                <ul>
+                    {% for error in errors %}
+                        <li>{{ error.messagePluralization is null
+                            ? error.messageTemplate|trans(error.messageParameters, 'validators')
+                            : error.messageTemplate|transchoice(error.messagePluralization, error.messageParameters, 'validators') }}</li>
+                    {% endfor %}
+                </ul>
             </div>
         {% endif %}
     {% endspaceless %}
@@ -255,74 +264,80 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                 {% set attrname_split = attrname|split('-') %}
                 {% if 'add' == attrname_split|first %}
                     <script>
-                    function {{ id }}Integrity() {}
-                    var {{ id }}Count = 0;
-                    var {{ id }}IndexIntegrity = 0;
-                    jQuery(document).ready(function(){
-                        {{ id }}IndexIntegrity = {{ id }}Count = jQuery('#{{ id }}').children('.formRow').length;
-                        jQuery('#{{ id }}').children('.formRow').each(function() {
-                            add_{{ id }}FormDeleteLink($(this));
-                            {% if 'sort' == attrname_split|last %}
-                            add_{{ id }}FormSortableLink($(this));
-                            {% endif %}
-                            {{ id }}Integrity();
-                        });
-                        function add_{{ id }}FormDeleteLink($tagFormDiv) {
-                            var $removeFormB = $('<a href="#" class="add buttonS bRed mt10" title="{% trans  from "views" %}admin.admin.js.remove.text{% endtrans %}">{% trans  from "views" %}admin.admin.js.remove.text{% endtrans %}</a>');
-                            
-                            if($tagFormDiv.children("a.add").length === 0) {
-                                $tagFormDiv.append($removeFormB);
-                                $removeFormB.on('click', function(e) {
-                                    {{ id }}Count--;
-                                    e.preventDefault();
-                                    $tagFormDiv.remove();
-                                    {{ id }}Integrity();
-                                    $.uniform.update();
-                                });
-                            }
+                        function {{ id }}Integrity() {
                         }
-                    {% if 'sort' == attrname_split|last %}
-                        function add_{{ id }}FormSortableLink($tagFormDiv) {
-                            var $upFormB = $('<a href="#" class="up buttonS bBlue mt10" style="margin-left:7px;" title="{% trans  from "views" %}admin.admin.js.up.text{% endtrans %}">{% trans  from "views" %}admin.admin.js.up.text{% endtrans %}</a>');
-                            var $downFormB = $('<a href="#" class="down buttonS bBlue mt10" style="margin-left:7px;" title="{% trans  from "views" %}admin.admin.js.down.text{% endtrans %}">{% trans  from "views" %}admin.admin.js.down.text{% endtrans %}</a>');
-                            
-                            if(($tagFormDiv.children("a.up").length + $tagFormDiv.children("a.down").length) === 0) {
-                                $tagFormDiv.append($upFormB);
-                                $tagFormDiv.append($downFormB);
-                                $upFormB.on('click', function(e) {
-                                    e.preventDefault();
-                                    switchFields($(this).parent().find(":input"), $(this).parent().prev("div").find(":input"));
-                                    {{ id }}Integrity();
-                                });
-                                $downFormB.on('click', function(e) {
-                                    e.preventDefault();
-                                    switchFields($(this).parent().find(":input"), $(this).parent().next("div").find(":input"));
-                                    {{ id }}Integrity();
-                                });
+                        var {{ id }}Count = 0;
+                        var {{ id }}IndexIntegrity = 0;
+                        jQuery(document).ready(function () {
+                            {{ id }}IndexIntegrity = {{ id }}Count = jQuery('#{{ id }}').children('.formRow').length;
+                            jQuery('#{{ id }}').children('.formRow').each(function () {
+                                add_{{ id }}FormDeleteLink($(this));
+                                {% if 'sort' == attrname_split|last %}
+                                add_{{ id }}FormSortableLink($(this));
+                                {% endif %}
+                                {{ id }}Integrity();
+                            });
+                            function add_{{ id }}FormDeleteLink($tagFormDiv) {
+                                var $removeFormB = $('<a href="#" class="add buttonS bRed mt10" title="{% trans  from "views" %}admin.admin.js.remove.text{% endtrans %}">{% trans  from "views" %}admin.admin.js.remove.text{% endtrans %}</a>');
+
+                                if ($tagFormDiv.children("a.add").length === 0) {
+                                    $tagFormDiv.append($removeFormB);
+                                    $removeFormB.on('click', function (e) {
+                                        {{ id }}Count--;
+                                        e.preventDefault();
+                                        $tagFormDiv.remove();
+                                        {{ id }}Integrity();
+                                        $.uniform.update();
+                                    });
+                                }
                             }
-                        }
-                    {% endif %}
-                        jQuery('#{{ attrvalue }}-{{ id }}').click(function() {
-                            var {{ id }}List = jQuery('#{{ id }}');
-                            var newWidget = {{ id }}List.attr('data-prototype');
-                            var exp = new RegExp(/__n[a]{1}me__(([\[\]_a-zA-Z0-9]+__n[a]{1}me__){0,})/g);
-                            newWidget = newWidget.replace(exp, {{ id }}IndexIntegrity+"$1");
-                            {{ id }}Count++; {{ id }}IndexIntegrity++;
-                            var newDiv = jQuery('<div class="formRow noBorderB"></div>');
-                            newDiv[0].innerHTML = newWidget;
-                            add_{{ id }}FormDeleteLink(newDiv);
+
                             {% if 'sort' == attrname_split|last %}
-                            add_{{ id }}FormSortableLink(newDiv);
+                            function add_{{ id }}FormSortableLink($tagFormDiv) {
+                                var $upFormB = $('<a href="#" class="up buttonS bBlue mt10" style="margin-left:7px;" title="{% trans  from "views" %}admin.admin.js.up.text{% endtrans %}">{% trans  from "views" %}admin.admin.js.up.text{% endtrans %}</a>');
+                                var $downFormB = $('<a href="#" class="down buttonS bBlue mt10" style="margin-left:7px;" title="{% trans  from "views" %}admin.admin.js.down.text{% endtrans %}">{% trans  from "views" %}admin.admin.js.down.text{% endtrans %}</a>');
+
+                                if (($tagFormDiv.children("a.up").length + $tagFormDiv.children("a.down").length) === 0) {
+                                    $tagFormDiv.append($upFormB);
+                                    $tagFormDiv.append($downFormB);
+                                    $upFormB.on('click', function (e) {
+                                        e.preventDefault();
+                                        switchFields($(this).parent().find(":input"), $(this).parent().prev("div").find(":input"));
+                                        {{ id }}Integrity();
+                                    });
+                                    $downFormB.on('click', function (e) {
+                                        e.preventDefault();
+                                        switchFields($(this).parent().find(":input"), $(this).parent().next("div").find(":input"));
+                                        {{ id }}Integrity();
+                                    });
+                                }
+                            }
+
                             {% endif %}
-                            newDiv.appendTo({{ id }}List);
-                            {{ id }}Integrity();
-                            JQueryUIApplyStyle(newDiv);
-                            return false;
+                            jQuery('#{{ attrvalue }}-{{ id }}').click(function () {
+                                var {{ id }}List = jQuery('#{{ id }}');
+                                var newWidget = {{ id }}List.attr('data-prototype');
+                                var exp = new RegExp(/__n[a]{1}me__(([\[\]_a-zA-Z0-9]+__n[a]{1}me__){0,})/g);
+                                newWidget = newWidget.replace(exp, {{ id }}IndexIntegrity + "$1");
+                                {{ id }}Count++;
+                                {{ id }}IndexIntegrity++;
+                                var newDiv = jQuery('<div class="formRow noBorderB"></div>');
+                                newDiv[0].innerHTML = newWidget;
+                                add_{{ id }}FormDeleteLink(newDiv);
+                                {% if 'sort' == attrname_split|last %}
+                                add_{{ id }}FormSortableLink(newDiv);
+                                {% endif %}
+                                newDiv.appendTo({{ id }}List);
+                                {{ id }}Integrity();
+                                JQueryUIApplyStyle(newDiv);
+                                return false;
+                            });
                         });
-                    });
                     </script>
-                    <a href="#" id="{{ attrvalue }}-{{ id }}" title="{% trans from "views" %}admin.admin.fields.add.title{% endtrans %}" class="add buttonS bBlue mt10">
-                        {% trans from "views" %}admin.admin.fields.add.text{% endtrans %}
+                    <a href="#" id="{{ attrvalue }}-{{ id }}"
+                       title="{% trans from "views" %}black.bundle.admin.adminForm.fields.add.title{% endtrans %}"
+                       class="add buttonS bBlue mt10">
+                        {% trans from "views" %}black.bundle.admin.adminForm.fields.add.text{% endtrans %}
                     </a>
                 {% endif %}
             {% endfor %}
