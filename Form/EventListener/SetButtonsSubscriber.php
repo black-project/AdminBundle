@@ -73,8 +73,7 @@ class SetButtonsSubscriber implements EventSubscriberInterface
                         'class'     => 'buttonL bDefault floatL mb10 mr10',
                     )
                 )
-            )
-        ;
+            );
     }
 
     /**
@@ -90,8 +89,7 @@ class SetButtonsSubscriber implements EventSubscriberInterface
                         'class'             => 'buttonL bRed floatL mb10 mr10'
                     )
                 )
-            )
-        ;
+            );
     }
 
 }

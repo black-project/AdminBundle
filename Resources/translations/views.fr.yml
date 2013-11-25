@@ -73,6 +73,13 @@ black:
                         title: Ajouter
                     double_box:
                         placeholder: Rechercher ...
+                    js:
+                        down:
+                            text: Descendre
+                        up:
+                            text: Monter
+                        remove:
+                            text: Enlever
                 fieldset:
                     title:
                         default: Créer une nouvelle chose
