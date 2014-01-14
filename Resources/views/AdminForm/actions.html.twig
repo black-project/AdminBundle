@@ -8,24 +8,24 @@
         </div>
         <div class="body">
             <input type="submit"
-                   value="{% if action == "edit" %}{% trans from "views" %}black.bundle.adminForm.actions.action.edit.text{% endtrans %}
+                   value="{% if action == "edit" %}{% trans from "views" %}black.bundle.admin.adminForm.actions.action.edit.text{% endtrans %}
             {% else %}
-            {% trans from "views" %}black.bundle.adminForm.actions.action.create.text{% endtrans %}
+            {% trans from "views" %}black.bundle.admin.adminForm.actions.action.create.text{% endtrans %}
             {% endif %}" form="validate" class="buttonM bGreen floatL"/>
 
             {% if action == 'edit' %}
                 <form action="{{ path(admin_delete, { 'id': document.id }) }}" method="post">
                     {{ form_widget(delete_form) }}
                     <button type="submit" class="buttonM bRed floatR">{% trans from "views" %}
-                        black.bundle.adminForm.actions.action.delete.text{% endtrans %}</button>
+                        black.bundle.admin.adminForm.actions.action.delete.text{% endtrans %}</button>
                     <div class="clear"></div>
                 </form>
             {% endif %}
 
             {% if action == 'new' %}
                 <a class="buttonM bBlue floatR" href="{{ path(admin_index) }}"
-                   title="{% trans from "views" %}black.bundle.adminForm.actions.action.back.text{% endtrans %}">
-                    {% trans from "views" %}black.bundle.adminForm.actions.action.back.text{% endtrans %}</a>
+                   title="{% trans from "views" %}black.bundle.admin.adminForm.actions.action.back.text{% endtrans %}">
+                    {% trans from "views" %}black.bundle.admin.adminForm.actions.action.back.text{% endtrans %}</a>
                 <div class="clear"></div>
             {% endif %}
         </div>
