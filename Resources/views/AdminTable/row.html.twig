@@ -18,7 +18,7 @@
             <a href="{{ path(admin_edit, { 'value': document.id }) }}" class="tablectrl_small bGreen tipS" title="{% trans from "views" %}black.bundle.admin.adminTable.row.edit.title{% endtrans %}">
                 <span class="iconb" data-icon="&#xe1db;"></span>
             </a>
-            <a href="{{ path(admin_delete, { 'value': document.id, 'token': csrf.generateCsrfToken('delete' ~ document.id) }) }}" class="tablectrl_small bRed tipS" title="{% trans from "views" %}black.bundle.admin.adminTable.row.delete.title{% endtrans %}">
+            <a href="{{ path(admin_delete, { 'value': document.id, 'token': csrf.generateCsrfToken('delete') }) }}" class="tablectrl_small bRed tipS" title="{% trans from "views" %}black.bundle.admin.adminTable.row.delete.title{% endtrans %}">
                 <span class="iconb" data-icon="&#xe136;"></span>
             </a>
         {% endif %}
