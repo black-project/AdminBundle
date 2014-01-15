@@ -9,14 +9,14 @@
 
     <td class="tableActs" align="center">
         {% if admin_show is defined %}
-            <a href="{{ path(admin_show, { 'id': document.id }) }}" class="tablectrl_small bBlue tipS"
+            <a href="{{ path(admin_show, { 'value': document.id }) }}" class="tablectrl_small bBlue tipS"
                title="{% trans from "views" %}black.bundle.admin.adminTable.row.show.title{% endtrans %}">
                 &nbsp;<span class="iconb" data-icon="">&nbsp;</span>
             </a>
         {% endif %}
 
         {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path(admin_edit, { 'id': document.id }) }}" class="tablectrl_small bGreen tipS"
+            <a href="{{ path(admin_edit, { 'value': document.id }) }}" class="tablectrl_small bGreen tipS"
                title="{% trans from "views" %}black.bundle.admin.adminTable.row.edit.title{% endtrans %}">
                 <span class="iconb" data-icon="&#xe1db;"></span>
             </a>
