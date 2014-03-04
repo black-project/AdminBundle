@@ -66,6 +66,10 @@ black:
                             text: Éditer
                     add:
                         title:
+                fields:
+                    doublebox:
+                        input:
+                            placeholder: Recherche
                 errors:
                 fields:
                     add:
@@ -131,5 +135,3 @@ black:
                         title: Editer
                     delete:
                         title: Supprimer
-
-            
