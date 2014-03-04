@@ -262,6 +262,7 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
             <div class="clear"></div>
             {% for attrname, attrvalue in attr %}
                 {% set attrname_split = attrname|split('-') %}
+
                 {% if 'add' == attrname_split|first %}
                     <script>
                         function {{ id }}Integrity() {
@@ -292,7 +293,7 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                                 }
                             }
 
-                            {% if 'sort' == attrname_split|last %}
+                            {% if 'sort' == attrname_split|first %}
                             function add_{{ id }}FormSortableLink($tagFormDiv) {
                                 var $upFormB = $('<a href="#" class="up buttonS bBlue mt10" style="margin-left:7px;" title="{% trans  from "views" %}admin.admin.js.up.text{% endtrans %}">{% trans  from "views" %}admin.admin.js.up.text{% endtrans %}</a>');
                                 var $downFormB = $('<a href="#" class="down buttonS bBlue mt10" style="margin-left:7px;" title="{% trans  from "views" %}admin.admin.js.down.text{% endtrans %}">{% trans  from "views" %}admin.admin.js.down.text{% endtrans %}</a>');
@@ -312,25 +313,29 @@ todo:   textarea sans rows/cols dans TextaeraType.php ! Obligation de passer par
                                     });
                                 }
                             }
-
                             {% endif %}
-                            jQuery('#{{ attrvalue }}-{{ id }}').click(function () {
+
+                            jQuery('#{{ attrvalue }}-{{ id }}').click(function (e) {
                                 var {{ id }}List = jQuery('#{{ id }}');
                                 var newWidget = {{ id }}List.attr('data-prototype');
                                 var exp = new RegExp(/__n[a]{1}me__(([\[\]_a-zA-Z0-9]+__n[a]{1}me__){0,})/g);
+
                                 newWidget = newWidget.replace(exp, {{ id }}IndexIntegrity + "$1");
                                 {{ id }}Count++;
                                 {{ id }}IndexIntegrity++;
                                 var newDiv = jQuery('<div class="formRow noBorderB"></div>');
+
                                 newDiv[0].innerHTML = newWidget;
                                 add_{{ id }}FormDeleteLink(newDiv);
+
                                 {% if 'sort' == attrname_split|last %}
                                 add_{{ id }}FormSortableLink(newDiv);
                                 {% endif %}
+
                                 newDiv.appendTo({{ id }}List);
                                 {{ id }}Integrity();
-                                JQueryUIApplyStyle(newDiv);
-                                return false;
+
+                                e.preventDefault()
                             });
                         });
                     </script>
