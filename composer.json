@@ -2,7 +2,7 @@
     "name": "black/admin-bundle",
     "type": "symfony-bundle",
     "description": "Symfony BlackAdminBundle",
-    "keywords": ["Admin Interface"],
+    "keywords": ["Bundle", "Symfony", "Black"],
     "homepage": "http://www.lablackroom.com",
     "license": "MIT",
     "authors": [
